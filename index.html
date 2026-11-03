@@ -4,96 +4,333 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Vykron Optimizer: software experimental para diagnóstico de hardware e análise de desempenho em jogos no Windows.">
 <meta name="theme-color" content="#090e0d">
+<meta name="description" content="Vykron Optimizer: diagnóstico de hardware e ferramentas experimentais para gamers no Windows.">
 <title>Vykron Optimizer | Site Oficial</title>
+
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:#090e0d;color:#f2fff8;font-family:Arial,sans-serif;line-height:1.65}
-header{padding:22px 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #20382e}
-.logo{font-weight:900;font-size:23px;letter-spacing:2px;color:#49e69b}
-nav a{color:#c1d5ca;text-decoration:none;margin-left:15px;font-size:13px}
-.hero{padding:105px 7% 90px;text-align:center;background:radial-gradient(ellipse at top,#123f2c,#090e0d 70%)}
-.tag{display:inline-block;color:#55eba6;border:1px solid #256a49;border-radius:30px;padding:6px 16px;font-size:12px}
-h1{font-size:clamp(40px,8vw,75px);line-height:1.08;margin:25px 0}
+body{
+  margin:0;
+  background:#090e0d;
+  color:#f2fff8;
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.65;
+}
+header{
+  padding:20px 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #20382e;
+  background:#0b1410;
+}
+.logo{
+  font-weight:900;
+  font-size:24px;
+  letter-spacing:3px;
+  color:#49e69b;
+}
+nav a{
+  color:#c1d5ca;
+  text-decoration:none;
+  margin-left:20px;
+  font-size:14px;
+}
+nav a:hover{color:#49e69b}
+.hero{
+  padding:105px 7% 90px;
+  text-align:center;
+  background:radial-gradient(ellipse at top,#164c35,#090e0d 70%);
+}
+.tag{
+  display:inline-block;
+  color:#55eba6;
+  border:1px solid #256a49;
+  border-radius:30px;
+  padding:7px 17px;
+  font-size:12px;
+  letter-spacing:1px;
+}
+h1{
+  font-size:clamp(42px,8vw,76px);
+  line-height:1.08;
+  margin:26px 0;
+}
 h1 span{color:#4de59d}
-.hero p{max-width:650px;margin:0 auto 28px;color:#b4c9bd}
-.btn{display:inline-block;background:#42df93;color:#06140d;text-decoration:none;font-weight:bold;border-radius:9px;padding:13px 24px;margin:6px}
-.btn-download{background:#ffffff;color:#092016}
-section{padding:65px 7%;max-width:1200px;margin:auto}
-h2{font-size:32px;margin-bottom:12px}
+.hero p{
+  max-width:650px;
+  margin:0 auto 28px;
+  color:#b4c9bd;
+}
+.btn{
+  display:inline-block;
+  background:#42df93;
+  color:#06140d;
+  text-decoration:none;
+  font-weight:800;
+  border-radius:10px;
+  padding:15px 27px;
+  margin:6px;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 28px #42df9360;
+}
+.btn-outline{
+  background:transparent;
+  color:#55eba6;
+  border:1px solid #318b5b;
+}
+.btn-download{
+  background:#42df93;
+  color:#06140d;
+  font-size:17px;
+}
+section{
+  padding:65px 7%;
+  max-width:1200px;
+  margin:auto;
+}
+h2{
+  font-size:32px;
+  margin-bottom:12px;
+}
 .muted{color:#a5b9ac}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:17px;margin-top:30px}
-.card{background:#111c17;border:1px solid #244133;border-radius:15px;padding:25px}
-.card h3{color:#55eaa4;margin-top:0}
-.notice{background:#11231a;border-left:4px solid #4de59d;padding:22px;border-radius:8px}
-.download-box{text-align:center;background:#10231a;border:1px solid #2b694a;border-radius:18px;padding:35px 20px;margin-top:25px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:17px;
+  margin-top:30px;
+}
+.card{
+  background:#111c17;
+  border:1px solid #244133;
+  border-radius:15px;
+  padding:25px;
+}
+.card h3{
+  color:#55eaa4;
+  margin-top:0;
+}
+.card p{color:#b4c9bd}
+.notice{
+  background:#11231a;
+  border-left:4px solid #4de59d;
+  padding:22px;
+  border-radius:8px;
+}
+.download-box{
+  text-align:center;
+  background:linear-gradient(135deg,#123923,#10231a);
+  border:1px solid #2b694a;
+  border-radius:20px;
+  padding:45px 22px;
+  margin-top:25px;
+  box-shadow:0 0 45px #1b6b3520;
+}
+.download-box h3{
+  font-size:29px;
+  color:#55eaa4;
+  margin:0;
+}
 .download-box p{color:#b4c9bd}
-footer{text-align:center;padding:35px;color:#8fa597;border-top:1px solid #20382e}
-@media(max-width:550px){
-header{padding:18px 5%}
-nav a{margin-left:8px;font-size:11px}
-.hero{padding:75px 6%}
-.btn{display:block;max-width:330px;margin:10px auto}
+.download-meta{
+  font-size:13px;
+  color:#91b6a0;
+  margin-top:15px;
+}
+footer{
+  text-align:center;
+  padding:35px;
+  color:#8fa597;
+  border-top:1px solid #20382e;
+}
+@media(max-width:600px){
+  header{padding:18px 5%;flex-wrap:wrap;gap:10px}
+  nav a{margin-left:10px;font-size:12px}
+  .hero{padding:75px 6%}
+  .btn{display:block;max-width:340px;margin:12px auto}
+  h2{font-size:27px}
 }
 </style>
 </head>
+
 <body>
+
 <header>
-<div class="logo">VYKRON</div>
-<nav>
-<a href="#recursos">Recursos</a>
-<a href="#download">Download</a>
-<a href="#seguranca">Segurança</a>
-</nav>
+  <div class="logo">VYKRON</div>
+  <nav>
+    <a href="#recursos">Recursos</a>
+    <a href="#download">Download</a>
+    <a href="#seguranca">Segurança</a>
+  </nav>
 </header>
+
 <main>
+
 <div class="hero">
-<div class="tag">VYKRON OPTIMIZER • V1.1 EXPERIMENTAL</div>
-<h1>Seu PC.<br><span>Seu desempenho.</span><br>Seu controle.</h1>
-<p>Um projeto de otimização para Windows focado em diagnóstico de hardware, análise de desempenho em jogos e recomendações personalizadas.</p>
-<a class="btn" href="#recursos">Conheça o projeto</a>
-<a class="btn btn-download" href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/tag/v1.1.0" target="_blank" rel="noopener noreferrer">⬇ BAIXAR VYKRON v1.1</a>
-<p style="font-size:12px">Versão experimental • Windows • Requer Python 3</p>
+  <div class="tag">VYKRON OPTIMIZER • V3.0 BETA</div>
+
+  <h1>
+    Seu PC.<br>
+    <span>Seu desempenho.</span><br>
+    Seu controle.
+  </h1>
+
+  <p>
+    Conheça o Vykron Optimizer, um projeto desenvolvido
+    para ajudar gamers a conhecer melhor seu computador,
+    analisar recursos do sistema e explorar ferramentas
+    de otimização para Windows.
+  </p>
+
+  <a class="btn btn-download"
+     href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/download/v3.0.0-beta/Vykron.exe">
+    ⬇ BAIXAR VYKRON 3.0
+  </a>
+
+  <a class="btn btn-outline" href="#recursos">
+    CONHEÇA O PROJETO
+  </a>
+
+  <p style="font-size:13px;margin-top:20px">
+    Versão Beta • Windows 64 bits • Executável independente
+  </p>
 </div>
 
 <section id="recursos">
-<h2>Projetado para gamers</h2>
-<p class="muted">Conheça os recursos em desenvolvimento.</p>
-<div class="grid">
-<div class="card"><h3>Diagnóstico inteligente</h3><p>Identificação de processador, placa de vídeo, memória e possíveis limitações do sistema.</p></div>
-<div class="card"><h3>Análise de FPS</h3><p>Estudo de métricas como FPS médio, 1% low e frametime a partir de arquivos de testes.</p></div>
-<div class="card"><h3>Perfis personalizados</h3><p>Recomendações voltadas a desempenho, estabilidade e equilíbrio, conforme o computador.</p></div>
-<div class="card"><h3>Comparação de resultados</h3><p>Objetivo de medir o impacto real das alterações com testes antes e depois.</p></div>
-<div class="card"><h3>Controle das alterações</h3><p>Explicações de benefícios e riscos, autorização do usuário e restauração quando disponível.</p></div>
-<div class="card"><h3>Foco em jogos</h3><p>Planejamento de análises específicas para CS2, Valorant, Fortnite e outros.</p></div>
-</div>
+  <h2>Projetado para gamers</h2>
+  <p class="muted">
+    Conheça as áreas e os recursos planejados para o Vykron.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Diagnóstico de hardware</h3>
+      <p>
+        Identificação de processador, placa de vídeo,
+        memória RAM e informações do computador.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Monitoramento</h3>
+      <p>
+        Acompanhamento de indicadores do sistema
+        para ajudar a identificar possíveis gargalos.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Perfis de desempenho</h3>
+      <p>
+        Projeto de perfis voltados a desempenho,
+        estabilidade e equilíbrio.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Análise de processos</h3>
+      <p>
+        Ferramentas para visualizar programas ativos
+        e entender o consumo de recursos.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Foco em jogos</h3>
+      <p>
+        Desenvolvimento de recomendações específicas
+        para CS2, Valorant, Fortnite e outros jogos.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Controle e transparência</h3>
+      <p>
+        Objetivo de oferecer explicações, confirmação
+        do usuário e opções de reversão para ajustes.
+      </p>
+    </div>
+
+  </div>
 </section>
 
 <section id="download">
-<h2>Download do Vykron</h2>
-<div class="download-box">
-<h3>Vykron Optimizer v1.1</h3>
-<p>Experimente o protótipo de diagnóstico e análise de desempenho para Windows.</p>
-<a class="btn" href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/tag/v1.1.0" target="_blank" rel="noopener noreferrer">⬇ ACESSAR DOWNLOAD</a>
-<p style="font-size:13px">Pré-lançamento experimental • Arquivo ZIP • Python 3 necessário</p>
-</div>
+
+  <h2>Download oficial</h2>
+  <p class="muted">
+    Acesse a versão experimental do Vykron Optimizer.
+  </p>
+
+  <div class="download-box">
+
+    <div class="tag">VERSÃO 3.0 • BETA</div>
+
+    <h3 style="margin-top:20px">
+      Vykron Optimizer
+    </h3>
+
+    <p>
+      Baixe o executável para Windows e participe
+      dos testes da versão experimental.
+    </p>
+
+    <a class="btn btn-download"
+       href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/download/v3.0.0-beta/Vykron.exe">
+      ⬇ BAIXAR VYKRON.EXE
+    </a>
+
+    <div class="download-meta">
+      Windows 64 bits • Arquivo .exe • Sem Python ou CMD
+    </div>
+
+    <p style="font-size:12px;margin-top:20px">
+      O arquivo é distribuído pelo GitHub Releases.
+      O download depende da disponibilidade do arquivo publicado.
+    </p>
+
+  </div>
 </section>
 
 <section id="seguranca">
-<h2>Transparência em primeiro lugar</h2>
-<div class="notice">
-O Vykron não promete aumentos milagrosos de FPS. Cada computador possui limitações diferentes. Alterações de sistema exigem avaliação de riscos, consentimento e testes adequados.
-</div>
+  <h2>Transparência em primeiro lugar</h2>
+
+  <div class="notice">
+    O Vykron Optimizer está em desenvolvimento e
+    não promete aumentos milagrosos de FPS.
+
+    Esta versão beta deve ser utilizada inicialmente
+    para testes. Antes de aplicar alterações no Windows,
+    recomenda-se criar um ponto de restauração e
+    manter backup dos arquivos importantes.
+  </div>
 </section>
 
 <section id="status">
-<h2>Status do projeto</h2>
-<p class="muted">O Vykron Optimizer está em desenvolvimento experimental. Seus recursos ainda precisam de validação em computadores Windows reais.</p>
-<p class="muted">Benchmarks públicos serão divulgados quando houver resultados verificáveis.</p>
+  <h2>Status do projeto</h2>
+
+  <p class="muted">
+    O Vykron Optimizer 3.0 Beta está em fase experimental.
+    Seus recursos e sua compatibilidade ainda precisam
+    de testes e validação em diferentes computadores.
+  </p>
+
+  <p class="muted">
+    Resultados de desempenho serão divulgados quando
+    houver testes comparativos verificáveis.
+  </p>
 </section>
+
 </main>
-<footer>© 2026 Vykron Optimizer • Projeto em desenvolvimento</footer>
+
+<footer>
+  © 2026 Vykron Optimizer • Projeto em desenvolvimento
+</footer>
+
 </body>
 </html>
