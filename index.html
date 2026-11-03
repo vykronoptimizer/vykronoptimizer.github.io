@@ -4,7 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Vykron Optimizer: projeto de software para diagnóstico e otimização de desempenho em jogos no Windows.">
+<meta name="description" content="Vykron Optimizer: software experimental para diagnóstico de hardware e análise de desempenho em jogos no Windows.">
+<meta name="theme-color" content="#090e0d">
 <title>Vykron Optimizer | Site Oficial</title>
 <style>
 *{box-sizing:border-box}
@@ -18,7 +19,8 @@ nav a{color:#c1d5ca;text-decoration:none;margin-left:15px;font-size:13px}
 h1{font-size:clamp(40px,8vw,75px);line-height:1.08;margin:25px 0}
 h1 span{color:#4de59d}
 .hero p{max-width:650px;margin:0 auto 28px;color:#b4c9bd}
-.btn{display:inline-block;background:#42df93;color:#06140d;text-decoration:none;font-weight:bold;border-radius:9px;padding:13px 24px}
+.btn{display:inline-block;background:#42df93;color:#06140d;text-decoration:none;font-weight:bold;border-radius:9px;padding:13px 24px;margin:6px}
+.btn-download{background:#ffffff;color:#092016}
 section{padding:65px 7%;max-width:1200px;margin:auto}
 h2{font-size:32px;margin-bottom:12px}
 .muted{color:#a5b9ac}
@@ -26,8 +28,15 @@ h2{font-size:32px;margin-bottom:12px}
 .card{background:#111c17;border:1px solid #244133;border-radius:15px;padding:25px}
 .card h3{color:#55eaa4;margin-top:0}
 .notice{background:#11231a;border-left:4px solid #4de59d;padding:22px;border-radius:8px}
+.download-box{text-align:center;background:#10231a;border:1px solid #2b694a;border-radius:18px;padding:35px 20px;margin-top:25px}
+.download-box p{color:#b4c9bd}
 footer{text-align:center;padding:35px;color:#8fa597;border-top:1px solid #20382e}
-@media(max-width:550px){header{padding:18px 5%}nav a{margin-left:8px;font-size:11px}.hero{padding:75px 6%}}
+@media(max-width:550px){
+header{padding:18px 5%}
+nav a{margin-left:8px;font-size:11px}
+.hero{padding:75px 6%}
+.btn{display:block;max-width:330px;margin:10px auto}
+}
 </style>
 </head>
 <body>
@@ -35,39 +44,54 @@ footer{text-align:center;padding:35px;color:#8fa597;border-top:1px solid #20382e
 <div class="logo">VYKRON</div>
 <nav>
 <a href="#recursos">Recursos</a>
+<a href="#download">Download</a>
 <a href="#seguranca">Segurança</a>
-<a href="#status">Status</a>
 </nav>
 </header>
 <main>
 <div class="hero">
-<div class="tag">VYKRON OPTIMIZER • EM DESENVOLVIMENTO</div>
+<div class="tag">VYKRON OPTIMIZER • V1.1 EXPERIMENTAL</div>
 <h1>Seu PC.<br><span>Seu desempenho.</span><br>Seu controle.</h1>
 <p>Um projeto de otimização para Windows focado em diagnóstico de hardware, análise de desempenho em jogos e recomendações personalizadas.</p>
 <a class="btn" href="#recursos">Conheça o projeto</a>
+<a class="btn btn-download" href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/tag/v1.1.0" target="_blank" rel="noopener noreferrer">⬇ BAIXAR VYKRON v1.1</a>
+<p style="font-size:12px">Versão experimental • Windows • Requer Python 3</p>
 </div>
+
 <section id="recursos">
 <h2>Projetado para gamers</h2>
-<p class="muted">Conheça os recursos planejados e em desenvolvimento.</p>
+<p class="muted">Conheça os recursos em desenvolvimento.</p>
 <div class="grid">
 <div class="card"><h3>Diagnóstico inteligente</h3><p>Identificação de processador, placa de vídeo, memória e possíveis limitações do sistema.</p></div>
-<div class="card"><h3>Análise de FPS</h3><p>Estudo de métricas como FPS médio, 1% low e frametime a partir de dados de testes.</p></div>
+<div class="card"><h3>Análise de FPS</h3><p>Estudo de métricas como FPS médio, 1% low e frametime a partir de arquivos de testes.</p></div>
 <div class="card"><h3>Perfis personalizados</h3><p>Recomendações voltadas a desempenho, estabilidade e equilíbrio, conforme o computador.</p></div>
 <div class="card"><h3>Comparação de resultados</h3><p>Objetivo de medir o impacto real das alterações com testes antes e depois.</p></div>
 <div class="card"><h3>Controle das alterações</h3><p>Explicações de benefícios e riscos, autorização do usuário e restauração quando disponível.</p></div>
-<div class="card"><h3>Foco em jogos</h3><p>Planejamento de análises específicas para jogos como CS2, Valorant, Fortnite e outros.</p></div>
+<div class="card"><h3>Foco em jogos</h3><p>Planejamento de análises específicas para CS2, Valorant, Fortnite e outros.</p></div>
 </div>
 </section>
+
+<section id="download">
+<h2>Download do Vykron</h2>
+<div class="download-box">
+<h3>Vykron Optimizer v1.1</h3>
+<p>Experimente o protótipo de diagnóstico e análise de desempenho para Windows.</p>
+<a class="btn" href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/tag/v1.1.0" target="_blank" rel="noopener noreferrer">⬇ ACESSAR DOWNLOAD</a>
+<p style="font-size:13px">Pré-lançamento experimental • Arquivo ZIP • Python 3 necessário</p>
+</div>
+</section>
+
 <section id="seguranca">
 <h2>Transparência em primeiro lugar</h2>
 <div class="notice">
 O Vykron não promete aumentos milagrosos de FPS. Cada computador possui limitações diferentes. Alterações de sistema exigem avaliação de riscos, consentimento e testes adequados.
 </div>
 </section>
+
 <section id="status">
 <h2>Status do projeto</h2>
-<p class="muted">O Vykron Optimizer está em desenvolvimento experimental. Recursos podem mudar e ainda precisam de validação em computadores Windows reais.</p>
-<p class="muted">Benchmarks públicos e downloads serão disponibilizados quando houver versões e resultados devidamente verificados.</p>
+<p class="muted">O Vykron Optimizer está em desenvolvimento experimental. Seus recursos ainda precisam de validação em computadores Windows reais.</p>
+<p class="muted">Benchmarks públicos serão divulgados quando houver resultados verificáveis.</p>
 </section>
 </main>
 <footer>© 2026 Vykron Optimizer • Projeto em desenvolvimento</footer>
