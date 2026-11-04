@@ -1,688 +1,384 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#08070b">
-  <meta name="description" content="Vykron Optimizer: sua central gamer para monitoramento, análise de FPS e otimização do Windows.">
-  <title>Vykron Optimizer | Seu PC no Máximo</title>
-
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            vy: {
-              black: "#08070b",
-              panel: "#151018",
-              red: "#ff244d",
-              deep: "#990b30",
-              muted: "#b9b0bd"
-            }
-          },
-          fontFamily: {
-            sans: ["Arial", "Helvetica", "sans-serif"]
-          }
-        }
-      }
-    };
-  </script>
-
-  <style>
-    html { scroll-behavior: smooth; }
-    body { background: #08070b; }
-    section[id] { scroll-margin-top: 80px; }
-
-    .neon-text {
-      text-shadow: 0 0 28px rgba(255,36,77,.45);
-    }
-
-    .neon-border {
-      box-shadow: 0 0 25px rgba(255,36,77,.12);
-    }
-
-    .gamer-button {
-      background: linear-gradient(110deg,#ff244d,#a30b35);
-      box-shadow: 0 0 30px rgba(255,36,77,.35);
-      transition: transform .2s, box-shadow .2s;
-    }
-
-    .gamer-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 45px rgba(255,36,77,.65);
-    }
-
-    .gamer-card {
-      background: linear-gradient(145deg,#21131e,#100d14);
-      border: 1px solid rgba(255,55,91,.25);
-      transition: transform .2s, border-color .2s;
-    }
-
-    .gamer-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(255,55,91,.85);
-    }
-
-    .hero {
-      position: relative;
-      background: #050408;
-    }
-
-    .hero img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    /* Área clicável sobre o botão pintado na arte */
-    .hero-download {
-      position: absolute;
-      left: 41.5%;
-      top: 61.8%;
-      width: 17.2%;
-      height: 7.8%;
-      border-radius: 12px;
-    }
-
-    .hero-download:hover,
-    .hero-download:focus-visible {
-      box-shadow: 0 0 38px rgba(255,36,77,.8);
-      background: rgba(255,36,77,.08);
-    }
-
-    .section-glow {
-      background:
-        radial-gradient(ellipse at 50% 0,
-        rgba(135,12,49,.25),transparent 65%);
-    }
-
-    @media(max-width:640px) {
-      .hero img {
-        width: 170%;
-        max-width: none;
-        margin-left: -35%;
-      }
-      .hero-download { display: none; }
-    }
-
-    @media(prefers-reduced-motion:reduce) {
-      html { scroll-behavior: auto; }
-      * { transition: none !important; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08060b">
+<meta name="description" content="Vykron Optimizer — Nexus 8.0 Beta 1. Otimização gamer, FPS, monitoramento, processos e ajustes reversíveis.">
+<title>VYKRON OPTIMIZER | Seu PC no máximo</title>
+<style>
+:root{
+--bg:#08070b;--panel:#141018;--red:#ff244c;
+--muted:#b9b0bd;--line:#6d2034
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+margin:0;background:var(--bg);color:#fff;
+font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif
+}
+a{color:inherit;text-decoration:none}
+button,a{outline-offset:3px}
+.wrap{width:min(1180px,calc(100% - 36px));margin:auto}
+.top{
+position:sticky;top:0;z-index:30;background:#07070bea;
+border-bottom:1px solid #ff244c40;backdrop-filter:blur(15px)
+}
+.nav{
+height:68px;display:flex;align-items:center;
+justify-content:space-between;gap:16px
+}
+.brand{font-size:22px;font-weight:1000;letter-spacing:3px}
+.brand span{color:var(--red)}
+nav{
+display:flex;gap:23px;align-items:center;
+font-size:12px;font-weight:800;letter-spacing:.6px
+}
+nav a:hover{color:#ff738a}
+.btn{
+display:inline-flex;align-items:center;justify-content:center;
+background:linear-gradient(100deg,#ff234d,#9b082a);
+border:1px solid #ff657a;color:#fff;
+font-size:13px;font-weight:900;letter-spacing:.7px;
+padding:14px 22px;
+clip-path:polygon(7% 0,93% 0,100% 50%,93% 100%,7% 100%,0 50%);
+transition:filter .2s,transform .2s
+}
+.btn:hover{filter:brightness(1.22);transform:translateY(-2px)}
+.hero{background:#050408;position:relative;overflow:hidden}
+.hero-art{display:block;width:100%;height:auto}
+.hero-link{
+position:absolute;left:41.5%;top:61.8%;
+width:17.2%;height:7.8%;
+border-radius:12px;cursor:pointer;
+transition:background .2s,box-shadow .2s
+}
+.hero-link:hover,.hero-link:focus-visible{
+background:#ff164519;box-shadow:0 0 36px #ff244c99
+}
+.hero-link span{
+position:absolute;width:1px;height:1px;
+overflow:hidden;clip-path:inset(50%)
+}
+.mobile-cta{display:none}
+.ticker{
+background:#130a10;border-block:1px solid #ff244c55;
+padding:16px 10px;text-align:center;
+color:#ffb6c3;font-size:12px;font-weight:900;letter-spacing:2px
+}
+.ticker span{margin:0 13px}
+.section{padding:86px 0}
+.kicker{
+color:#ff536f;text-transform:uppercase;
+font-size:12px;letter-spacing:4px;font-weight:900
+}
+.section h2{
+font-size:clamp(31px,4.4vw,54px);line-height:1.05;
+margin:12px 0 18px;text-transform:uppercase;
+font-weight:1000;letter-spacing:-1px
+}
+.section h2 em{color:var(--red);font-style:normal}
+.lead{
+max-width:760px;color:var(--muted);
+line-height:1.75;font-size:16px;margin:0 0 34px
+}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.card{
+position:relative;overflow:hidden;
+background:linear-gradient(145deg,#20111d,#100d14 70%);
+border:1px solid #542337;
+padding:28px 24px;min-height:205px;
+transition:transform .2s,border-color .2s
+}
+.card:before{
+content:"";position:absolute;top:0;left:0;
+width:70px;height:3px;background:#ff244c;
+box-shadow:0 0 15px #ff244c
+}
+.card:hover{transform:translateY(-4px);border-color:#ff4a69}
+.card .ico{color:#ff4567;font-size:28px}
+.card h3{font-size:19px;margin:14px 0 9px}
+.card p{font-size:14px;color:#bdb5c1;line-height:1.65;margin:0}
+.darkband{
+background:radial-gradient(ellipse at 50% 0,#4b0c244a,transparent 58%),#0d0a10;
+border-block:1px solid #ffffff12
+}
+.benefits{
+display:grid;grid-template-columns:repeat(4,1fr);gap:16px
+}
+.benefit{
+border-left:2px solid var(--red);
+padding:15px 18px;background:#ffffff08
+}
+.benefit strong{font-size:17px;display:block;margin-bottom:8px}
+.benefit p{
+font-size:13px;color:var(--muted);line-height:1.6;margin:0
+}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.spec{background:#151019;border:1px solid #5c2637;padding:30px}
+.spec h3{margin:0 0 20px;font-size:21px;color:#ff627c}
+.spec dl{margin:0}
+.spec dl div{
+display:flex;justify-content:space-between;gap:15px;
+padding:13px 0;border-bottom:1px solid #ffffff15
+}
+.spec dt{color:#a8a0ac}
+.spec dd{text-align:right;margin:0;font-weight:700}
+.note{
+color:#bdb3c1;font-size:13px;line-height:1.7;margin-top:20px
+}
+.final{
+background:radial-gradient(ellipse at center,#6e0d2b55,transparent 67%);
+border:1px solid #ff355c7d;text-align:center;padding:65px 24px
+}
+.final p{color:#c5b9c7;line-height:1.7}
+.final .btn{margin:18px auto 0}
+.foot{
+border-top:1px solid #ff244c33;color:#99909e;
+font-size:12px;padding:30px 0;line-height:1.7
+}
+.foot .wrap{
+display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap
+}
+@media(max-width:900px){
+.grid{grid-template-columns:repeat(2,1fr)}
+.benefits{grid-template-columns:repeat(2,1fr)}
+nav a:not(.btn){display:none}
+}
+@media(max-width:620px){
+.nav{height:60px}
+.brand{font-size:17px}
+.nav .btn{font-size:11px;padding:11px 16px}
+.hero-art{width:170%;max-width:none;margin-left:-35%}
+.hero-link{display:none}
+.mobile-cta{
+display:block;text-align:center;
+padding:20px 16px 27px;background:#08060b
+}
+.mobile-cta .btn{width:min(350px,100%)}
+.ticker{font-size:10px;line-height:2}
+.ticker span{margin:0 6px}
+.section{padding:60px 0}
+.grid,.split,.benefits{grid-template-columns:1fr}
+.spec dl div{flex-direction:column;gap:3px}
+.spec dd{text-align:left}
+.final{padding:42px 15px}
+}
+@media(prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*{transition:none!important}
+}
+</style>
 </head>
-
-<body class="text-white antialiased">
-
-  <!-- HEADER FIXO -->
-  <header class="fixed top-0 inset-x-0 z-50 bg-vy-black/95 backdrop-blur-xl border-b border-vy-red/30">
-    <div class="max-w-7xl mx-auto px-5 h-[74px] flex items-center justify-between">
-
-      <a href="#inicio" class="font-black tracking-[.2em] text-xl md:text-2xl">
-        <span class="text-vy-red">V</span>YKRON
-      </a>
-
-      <nav aria-label="Navegação principal" class="hidden md:flex items-center gap-7 text-xs font-bold tracking-wider">
-        <a href="#inicio" class="hover:text-vy-red">INÍCIO</a>
-        <a href="#vantagens" class="hover:text-vy-red">VANTAGENS</a>
-        <a href="#recursos" class="hover:text-vy-red">RECURSOS</a>
-        <a href="#sobre" class="hover:text-vy-red">SOBRE</a>
-        <a href="#requisitos" class="hover:text-vy-red">REQUISITOS</a>
-        <a href="#download" class="gamer-button rounded-md px-6 py-3">DOWNLOAD</a>
-      </nav>
-
-      <button id="menuButton"
-        class="md:hidden border border-vy-red/50 rounded-md px-4 py-2"
-        aria-label="Abrir menu"
-        aria-expanded="false"
-        aria-controls="mobileMenu">
-        ☰
-      </button>
-    </div>
-
-    <nav id="mobileMenu" aria-label="Navegação mobile"
-      class="hidden md:hidden bg-vy-black border-t border-vy-red/30 p-5">
-      <div class="flex flex-col gap-5 text-sm font-bold">
-        <a href="#inicio">INÍCIO</a>
-        <a href="#vantagens">VANTAGENS</a>
-        <a href="#recursos">RECURSOS</a>
-        <a href="#sobre">SOBRE</a>
-        <a href="#requisitos">REQUISITOS</a>
-        <a href="#download" class="text-vy-red">DOWNLOAD</a>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-
-    <!-- HERO CINEMATOGRÁFICO -->
-    <section id="inicio" class="hero pt-[74px]" aria-label="Vykron Optimizer">
-      <img
-        src="vykron-hero.png"
-        alt="Arte cinematográfica Vykron Optimizer com personagens e elementos de jogos, iluminação neon e setup gamer"
-        fetchpriority="high"
-      >
-
-      <a
-        class="hero-download"
-        href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/latest/download/Vykron.exe"
-        aria-label="Baixar Vykron Optimizer para Windows">
-        <span class="sr-only">BAIXAR VYKRON AGORA</span>
-      </a>
-
-      <!-- CTA próprio para telas pequenas -->
-      <div class="sm:hidden text-center px-5 pb-8">
-        <a href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/latest/download/Vykron.exe"
-          class="gamer-button inline-block rounded-lg px-8 py-4 font-black text-sm">
-          ↓ BAIXAR VYKRON GRATUITAMENTE
-        </a>
-      </div>
-    </section>
-
-    <!-- FAIXA DE DESTAQUES -->
-    <div class="bg-[#130b11] border-y border-vy-red/40">
-      <div class="max-w-7xl mx-auto px-5 py-5 flex flex-wrap justify-center gap-x-9 gap-y-4 text-xs font-black tracking-wider">
-        <span>⚡ SMART OPTIMIZATION</span>
-        <span>◈ FPS PERFORMANCE LAB</span>
-        <span>◉ MONITORAMENTO</span>
-        <span>♻ RESTORE CENTER</span>
-        <span>▣ PROCESS CLEANER</span>
-      </div>
-    </div>
-
-    <!-- VANTAGENS -->
-    <section id="vantagens" class="py-24 px-5 section-glow">
-      <div class="max-w-7xl mx-auto">
-        <p class="text-vy-red text-xs tracking-[.3em] font-black mb-4">
-          POR QUE ESCOLHER O VYKRON?
-        </p>
-
-        <h1 class="text-4xl md:text-6xl font-black uppercase leading-tight">
-          CONTROLE TOTAL.<br>
-          <span class="text-vy-red neon-text">FOCO EM PERFORMANCE.</span>
-        </h1>
-
-        <p class="text-vy-muted max-w-3xl mt-6 leading-8">
-          O Vykron Optimizer reúne ferramentas para diagnosticar seu computador,
-          monitorar recursos, revisar processos e aplicar ajustes opcionais
-          do Windows. Tudo em uma interface criada para quem leva jogos a sério.
-        </p>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
-
-          <article class="gamer-card p-7 rounded-xl">
-            <div class="text-3xl mb-5">⚡</div>
-            <h2 class="font-black text-lg mb-3">OTIMIZAÇÃO ASSISTIDA</h2>
-            <p class="text-vy-muted text-sm leading-7">
-              Encontre ajustes opcionais e escolha quais aplicar,
-              sem precisar procurar manualmente por cada configuração.
-            </p>
-          </article>
-
-          <article class="gamer-card p-7 rounded-xl">
-            <div class="text-3xl mb-5">📊</div>
-            <h2 class="font-black text-lg mb-3">DADOS REAIS</h2>
-            <p class="text-vy-muted text-sm leading-7">
-              Acompanhe informações do sistema e compare medições
-              de desempenho quando a captura estiver disponível.
-            </p>
-          </article>
-
-          <article class="gamer-card p-7 rounded-xl">
-            <div class="text-3xl mb-5">🛡️</div>
-            <h2 class="font-black text-lg mb-3">AJUSTES CONTROLADOS</h2>
-            <p class="text-vy-muted text-sm leading-7">
-              Confirmações e mecanismos de reversão para
-              alterações compatíveis realizadas pelo aplicativo.
-            </p>
-          </article>
-
-          <article class="gamer-card p-7 rounded-xl">
-            <div class="text-3xl mb-5">🎮</div>
-            <h2 class="font-black text-lg mb-3">FOCO GAMER</h2>
-            <p class="text-vy-muted text-sm leading-7">
-              Ferramentas voltadas ao ambiente de jogos,
-              com atenção a processos e consumo de recursos.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- FUNCIONALIDADES -->
-    <section id="recursos" class="py-24 px-5 bg-[#100b12] border-y border-white/10">
-      <div class="max-w-7xl mx-auto">
-
-        <div class="text-center mb-14">
-          <p class="text-vy-red tracking-[.3em] text-xs font-black mb-4">
-            VYKRON NEXUS 8.0 BETA 1
-          </p>
-          <h2 class="text-4xl md:text-6xl font-black uppercase">
-            ARSENAL DE <span class="text-vy-red">RECURSOS</span>
-          </h2>
-          <p class="text-vy-muted mt-5 max-w-2xl mx-auto leading-7">
-            Ferramentas de diagnóstico, ajustes e análise.
-            Algumas funções dependem de permissões e compatibilidade.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-          <article class="gamer-card rounded-xl p-8">
-            <div class="text-vy-red text-3xl mb-5">⚡</div>
-            <h3 class="font-black text-xl mb-3">SMART OPTIMIZATION</h3>
-            <p class="text-vy-muted text-sm leading-7">
-              Analisa configurações e apresenta ajustes opcionais
-              para aplicação assistida.
-            </p>
-          </article>
-
-          <article class="gamer-card rounded-xl p-8">
-            <div class="text-vy-red text-3xl mb-5">◈</div>
-            <h3 class="font-black text-xl mb-3">FPS PERFORMANCE LAB</h3>
-            <p class="text-vy-muted text-sm leading-7">
-              Ferramenta experimental de medição de FPS e frametime
-              para comparação antes e depois das otimizações.
-            </p>
-          </article>
-
-          <article class="gamer-card rounded-xl p-8">
-            <div class="text-vy-red text-3xl mb-5">◉</div>
-            <h3 class="font-black text-xl mb-3">HARDWARE MONITOR</h3>
-            <p class="text-vy-muted text-sm leading-7">
-              Identificação e acompanhamento de CPU, GPU, RAM
-              e armazenamento conforme os dados disponíveis.
-            </p>
-          </article>
-
-          <article class="gamer-card rounded-xl p-8">
-            <div class="text-vy-red text-3xl mb-5">▣</div>
-            <h3 class="font-black text-xl mb-3">SMART PROCESS CLEANER</h3>
-            <p class="text-vy-muted text-sm leading-7">
-              Classificação de processos e seleção assistida
-              de aplicativos opcionais, com confirmação antes de encerrar.
-            </p>
-          </article>
-
-          <article class="gamer-card rounded-xl p-8">
-            <div class="text-vy-red text-3xl mb-5">⬡</div>
-            <h3 class="font-black text-xl mb-3">STORAGE CARE 2.0</h3>
-            <p class="text-vy-muted text-sm leading-7">
-              Análise de arquivos temporários e opções
-              de limpeza com prévia dos itens selecionados.
-            </p>
-          </article>
-
-          <article class="gamer-card rounded-xl p-8">
-            <div class="text-vy-red text-3xl mb-5">♻</div>
-            <h3 class="font-black text-xl mb-3">RESTORE CENTER</h3>
-            <p class="text-vy-muted text-sm leading-7">
-              Histórico de alterações e restauração
-              de configurações compatíveis.
-            </p>
-          </article>
-
-          <article class="gamer-card rounded-xl p-8">
-            <div class="text-vy-red text-3xl mb-5">🎮</div>
-            <h3 class="font-black text-xl mb-3">GAME BOOST</h3>
-            <p class="text-vy-muted text-sm leading-7">
-              Recursos para revisar atividades em segundo plano
-              e preparar o ambiente para jogar.
-            </p>
-          </article>
-
-          <article class="gamer-card rounded-xl p-8">
-            <div class="text-vy-red text-3xl mb-5">▤</div>
-            <h3 class="font-black text-xl mb-3">DIAGNÓSTICO AVANÇADO</h3>
-            <p class="text-vy-muted text-sm leading-7">
-              Informações de hardware e sistema,
-              acompanhadas de recomendações baseadas nos dados coletados.
-            </p>
-          </article>
-
-          <article class="gamer-card rounded-xl p-8">
-            <div class="text-vy-red text-3xl mb-5">📈</div>
-            <h3 class="font-black text-xl mb-3">RELATÓRIOS</h3>
-            <p class="text-vy-muted text-sm leading-7">
-              Registros de operações e comparativos
-              para acompanhar alterações e resultados observados.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- SOBRE -->
-    <section id="sobre" class="py-24 px-5 section-glow">
-      <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
-
-        <div>
-          <p class="text-vy-red tracking-[.3em] text-xs font-black mb-4">
-            SOBRE O PROJETO
-          </p>
-          <h2 class="text-4xl md:text-5xl font-black uppercase leading-tight">
-            NASCIDO DA <span class="text-vy-red">PAIXÃO POR JOGOS.</span>
-          </h2>
-          <p class="text-vy-muted leading-8 mt-6">
-            O Vykron Optimizer é um projeto independente criado para
-            reunir ferramentas de diagnóstico, monitoramento e ajustes
-            do Windows em uma experiência gamer moderna.
-          </p>
-          <p class="text-vy-muted leading-8 mt-4">
-            A proposta é oferecer mais controle e transparência,
-            ajudando cada usuário a compreender o próprio computador
-            e a avaliar possíveis melhorias sem promessas irreais.
-          </p>
-        </div>
-
-        <div class="gamer-card neon-border rounded-2xl p-9">
-          <p class="text-vy-red text-xs font-black tracking-widest">
-            NOSSA FILOSOFIA
-          </p>
-          <p class="text-3xl md:text-4xl font-black leading-tight mt-6">
-            PERFORMANCE NÃO É MÁGICA.
-            <span class="text-vy-red">É ANÁLISE, CONTROLE E TESTE.</span>
-          </p>
-          <p class="text-vy-muted text-sm leading-7 mt-6">
-            Cada máquina tem seus próprios limites.
-            O Vykron busca facilitar a identificação de oportunidades
-            de ajuste e a avaliação dos resultados.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- TRANSPARÊNCIA / PROVA SOCIAL -->
-    <section class="py-20 px-5 bg-[#100b12] border-y border-white/10">
-      <div class="max-w-6xl mx-auto text-center">
-        <p class="text-vy-red text-xs font-black tracking-[.3em] mb-4">
-          DESENVOLVIMENTO EM EVOLUÇÃO
-        </p>
-        <h2 class="text-3xl md:text-5xl font-black uppercase">
-          UMA BETA. <span class="text-vy-red">SEM PROMESSAS FALSAS.</span>
-        </h2>
-        <p class="text-vy-muted max-w-3xl mx-auto leading-8 mt-7">
-          O Vykron está em desenvolvimento. Recursos experimentais
-          podem apresentar limitações e incompatibilidades.
-          Não exibimos avaliações inventadas, porcentagens fictícias
-          de ganho de FPS ou números de usuários não verificados.
-        </p>
-        <a href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases"
-          target="_blank" rel="noopener noreferrer"
-          class="inline-block mt-8 border border-vy-red/70 rounded-lg px-7 py-4 text-sm font-bold hover:bg-vy-red/10">
-          VER VERSÕES PUBLICADAS
-        </a>
-      </div>
-    </section>
-
-    <!-- ESPECIFICAÇÕES -->
-    <section id="requisitos" class="py-24 px-5">
-      <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-12">
-          <p class="text-vy-red tracking-[.3em] text-xs font-black mb-4">
-            INFORMAÇÕES TÉCNICAS
-          </p>
-          <h2 class="text-4xl md:text-5xl font-black uppercase">
-            ESPECIFICAÇÕES <span class="text-vy-red">E REQUISITOS</span>
-          </h2>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-6">
-
-          <div class="gamer-card rounded-xl p-8">
-            <h3 class="text-vy-red text-xl font-black mb-6">
-              ESPECIFICAÇÕES DO APLICATIVO
-            </h3>
-            <dl class="space-y-5 text-sm">
-              <div class="flex justify-between gap-4 border-b border-white/10 pb-3">
-                <dt class="text-vy-muted">Nome</dt>
-                <dd class="font-bold text-right">Vykron Optimizer</dd>
-              </div>
-              <div class="flex justify-between gap-4 border-b border-white/10 pb-3">
-                <dt class="text-vy-muted">Edição</dt>
-                <dd class="font-bold text-right">Nexus 8.0 Beta 1</dd>
-              </div>
-              <div class="flex justify-between gap-4 border-b border-white/10 pb-3">
-                <dt class="text-vy-muted">Sistema alvo</dt>
-                <dd class="font-bold text-right">Windows 11</dd>
-              </div>
-              <div class="flex justify-between gap-4 border-b border-white/10 pb-3">
-                <dt class="text-vy-muted">Distribuição</dt>
-                <dd class="font-bold text-right">Vykron.exe</dd>
-              </div>
-              <div class="flex justify-between gap-4">
-                <dt class="text-vy-muted">Preço</dt>
-                <dd class="font-bold text-right">Gratuito</dd>
-              </div>
-            </dl>
-          </div>
-
-          <div class="gamer-card rounded-xl p-8">
-            <h3 class="text-vy-red text-xl font-black mb-6">
-              COMPATIBILIDADE E SEGURANÇA
-            </h3>
-            <dl class="space-y-5 text-sm">
-              <div class="flex justify-between gap-4 border-b border-white/10 pb-3">
-                <dt class="text-vy-muted">Arquitetura alvo</dt>
-                <dd class="font-bold text-right">64 bits</dd>
-              </div>
-              <div class="flex justify-between gap-4 border-b border-white/10 pb-3">
-                <dt class="text-vy-muted">Permissões</dt>
-                <dd class="font-bold text-right">Admin em algumas ações</dd>
-              </div>
-              <div class="flex justify-between gap-4 border-b border-white/10 pb-3">
-                <dt class="text-vy-muted">FPS</dt>
-                <dd class="font-bold text-right">Captura experimental</dd>
-              </div>
-              <div class="flex justify-between gap-4 border-b border-white/10 pb-3">
-                <dt class="text-vy-muted">Internet</dt>
-                <dd class="font-bold text-right">Para download</dd>
-              </div>
-              <div class="flex justify-between gap-4">
-                <dt class="text-vy-muted">Backup</dt>
-                <dd class="font-bold text-right">Recomendado</dd>
-              </div>
-            </dl>
-          </div>
-
-        </div>
-
-        <p class="text-vy-muted text-sm leading-7 mt-7">
-          Os requisitos mínimos de CPU, RAM e armazenamento ainda
-          não foram validados em uma matriz ampla de computadores.
-          A compatibilidade e os resultados podem variar conforme
-          a máquina, o jogo e a versão instalada.
-        </p>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="py-20 px-5 bg-[#100b12]">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-5xl font-black text-center mb-12">
-          DÚVIDAS <span class="text-vy-red">FREQUENTES</span>
-        </h2>
-
-        <div class="space-y-4" id="faq">
-          <div class="border border-vy-red/30 rounded-lg bg-vy-panel">
-            <button class="faq-button w-full p-6 text-left font-bold flex justify-between gap-4"
-              aria-expanded="false">
-              O Vykron garante mais FPS?
-              <span class="text-vy-red">+</span>
-            </button>
-            <div class="faq-answer hidden px-6 pb-6 text-vy-muted text-sm leading-7">
-              Não. O desempenho depende do hardware, jogo e sistema.
-              O Vykron ajuda a identificar configurações e comparar resultados.
-            </div>
-          </div>
-
-          <div class="border border-vy-red/30 rounded-lg bg-vy-panel">
-            <button class="faq-button w-full p-6 text-left font-bold flex justify-between gap-4"
-              aria-expanded="false">
-              Preciso baixar um programa separado para medir FPS?
-              <span class="text-vy-red">+</span>
-            </button>
-            <div class="faq-answer hidden px-6 pb-6 text-vy-muted text-sm leading-7">
-              A medição depende do coletor integrado à versão instalada,
-              das permissões e da compatibilidade do jogo.
-              Essa função ainda é experimental.
-            </div>
-          </div>
-
-          <div class="border border-vy-red/30 rounded-lg bg-vy-panel">
-            <button class="faq-button w-full p-6 text-left font-bold flex justify-between gap-4"
-              aria-expanded="false">
-              Posso desfazer as otimizações?
-              <span class="text-vy-red">+</span>
-            </button>
-            <div class="faq-answer hidden px-6 pb-6 text-vy-muted text-sm leading-7">
-              O Vykron possui mecanismos de reversão para ajustes
-              compatíveis. Faça backup antes de alterações importantes.
-            </div>
-          </div>
-
-          <div class="border border-vy-red/30 rounded-lg bg-vy-panel">
-            <button class="faq-button w-full p-6 text-left font-bold flex justify-between gap-4"
-              aria-expanded="false">
-              O aplicativo é gratuito?
-              <span class="text-vy-red">+</span>
-            </button>
-            <div class="faq-answer hidden px-6 pb-6 text-vy-muted text-sm leading-7">
-              Sim. A versão beta é disponibilizada gratuitamente
-              pelo GitHub Releases do projeto.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DOWNLOAD FINAL -->
-    <section id="download" class="py-24 px-5 section-glow">
-      <div class="max-w-5xl mx-auto border border-vy-red/60 neon-border rounded-2xl p-8 md:p-16 text-center">
-        <p class="text-vy-red tracking-[.3em] text-xs font-black mb-5">
-          READY TO OPTIMIZE?
-        </p>
-
-        <h2 class="text-4xl md:text-6xl font-black uppercase leading-tight">
-          SEU PC.<br>
-          <span class="text-vy-red neon-text">SEU MÁXIMO.</span>
-        </h2>
-
-        <p class="text-vy-muted leading-8 mt-7 max-w-2xl mx-auto">
-          Conheça o Vykron Optimizer Nexus 8.0 Beta 1.
-          Baixe o executável para Windows 11 e explore as ferramentas
-          de diagnóstico e otimização.
-        </p>
-
-        <a href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/latest/download/Vykron.exe"
-          class="gamer-button inline-flex items-center justify-center rounded-lg px-10 py-5 mt-9 text-sm md:text-base font-black">
-          ↓ BAIXAR VYKRON.EXE
-        </a>
-
-        <p class="text-xs text-vy-muted mt-6">
-          DOWNLOAD GRATUITO • WINDOWS 11 • VERSÃO BETA
-        </p>
-
-        <p class="text-xs text-vy-muted mt-3">
-          O download depende da publicação do arquivo Vykron.exe
-          na versão mais recente do GitHub Releases.
-        </p>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="bg-[#07060a] border-t border-vy-red/30 py-12 px-5">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-10">
-
-      <div class="max-w-md">
-        <a href="#inicio" class="text-2xl font-black tracking-widest">
-          <span class="text-vy-red">V</span>YKRON
-        </a>
-        <p class="text-vy-muted text-sm leading-7 mt-4">
-          Vykron Optimizer — projeto independente de otimização gamer,
-          monitoramento e diagnóstico para Windows.
-        </p>
-      </div>
-
-      <div>
-        <h3 class="font-black mb-4">NAVEGAÇÃO</h3>
-        <div class="flex flex-col gap-3 text-vy-muted text-sm">
-          <a href="#vantagens" class="hover:text-vy-red">Vantagens</a>
-          <a href="#recursos" class="hover:text-vy-red">Recursos</a>
-          <a href="#sobre" class="hover:text-vy-red">Sobre</a>
-          <a href="#requisitos" class="hover:text-vy-red">Requisitos</a>
-        </div>
-      </div>
-
-      <div>
-        <h3 class="font-black mb-4">PROJETO</h3>
-        <div class="flex flex-col gap-3 text-vy-muted text-sm">
-          <a href="https://github.com/vykronoptimizer/vykronoptimizer.github.io"
-            target="_blank" rel="noopener noreferrer"
-            class="hover:text-vy-red">
-            GitHub
-          </a>
-          <a href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases"
-            target="_blank" rel="noopener noreferrer"
-            class="hover:text-vy-red">
-            Versões e downloads
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="max-w-7xl mx-auto mt-12 pt-7 border-t border-white/10 text-vy-muted text-xs leading-6">
-      <p>© 2026 Vykron Optimizer. Todos os direitos reservados.</p>
-      <p class="mt-2">
-        Projeto independente, sem afiliação oficial com Valve,
-        Riot Games, Epic Games, Rockstar Games ou Psyonix.
-        Marcas e personagens pertencem aos respectivos titulares.
-      </p>
-    </div>
-  </footer>
-
-  <!-- JAVASCRIPT: MENU MOBILE E FAQ -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const menuButton = document.getElementById("menuButton");
-      const mobileMenu = document.getElementById("mobileMenu");
-
-      menuButton.addEventListener("click", function () {
-        const isOpen = !mobileMenu.classList.contains("hidden");
-        mobileMenu.classList.toggle("hidden");
-        menuButton.setAttribute("aria-expanded", String(!isOpen));
-        menuButton.textContent = isOpen ? "☰" : "✕";
-      });
-
-      mobileMenu.querySelectorAll("a").forEach(function (link) {
-        link.addEventListener("click", function () {
-          mobileMenu.classList.add("hidden");
-          menuButton.setAttribute("aria-expanded", "false");
-          menuButton.textContent = "☰";
-        });
-      });
-
-      document.querySelectorAll(".faq-button").forEach(function (button) {
-        button.addEventListener("click", function () {
-          const answer = button.nextElementSibling;
-          const isOpen = button.getAttribute("aria-expanded") === "true";
-
-          button.setAttribute("aria-expanded", String(!isOpen));
-          answer.classList.toggle("hidden", isOpen);
-          button.querySelector("span").textContent = isOpen ? "+" : "−";
-        });
-      });
-    });
-  </script>
+<body>
+
+<header class="top">
+<div class="wrap nav">
+<a class="brand" href="#inicio"><span>V</span>YKRON</a>
+<nav>
+<a href="#vantagens">VANTAGENS</a>
+<a href="#recursos">RECURSOS</a>
+<a href="#especificacoes">ESPECIFICAÇÕES</a>
+<a class="btn" href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/latest/download/Vykron.exe">DOWNLOAD</a>
+</nav>
+</div>
+</header>
+
+<main>
+
+<section class="hero" id="inicio" aria-label="Vykron Optimizer: maximize seu desempenho">
+<img class="hero-art" src="vykron-hero.png" alt="Vykron Optimizer com Counter-Strike 2, GTA V, Valorant, Fortnite e Rocket League" fetchpriority="high">
+<a class="hero-link" href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/latest/download/Vykron.exe" aria-label="Baixar Vykron.exe diretamente">
+<span>Baixar Vykron.exe</span>
+</a>
+</section>
+
+<div class="mobile-cta">
+<a class="btn" href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/latest/download/Vykron.exe">⬇ BAIXAR VYKRON.EXE</a>
+</div>
+
+<div class="ticker">
+<span>⚡ OTIMIZAÇÃO INTELIGENTE</span>
+<span>◈ FPS REAL*</span>
+<span>▣ PROCESSOS</span>
+<span>♻ RESTAURAÇÃO</span>
+</div>
+
+<section id="vantagens" class="section">
+<div class="wrap">
+<div class="kicker">POR QUE USAR O VYKRON?</div>
+<h2>SEU SETUP. <em>SEU CONTROLE.</em></h2>
+<p class="lead">
+O Vykron reúne diagnóstico, monitoramento e ferramentas de ajuste em uma interface gamer.
+O objetivo é ajudar você a identificar gargalos e controlar atividades opcionais do Windows — sem prometer FPS mágico.
+</p>
+
+<div class="benefits">
+<div class="benefit">
+<strong>Mais visibilidade</strong>
+<p>Entenda como CPU, GPU, RAM e processos estão sendo utilizados.</p>
+</div>
+<div class="benefit">
+<strong>Menos trabalho manual</strong>
+<p>Encontre ajustes opcionais e revise recomendações em um só lugar.</p>
+</div>
+<div class="benefit">
+<strong>Comparação real</strong>
+<p>Analise sessões de FPS antes e depois, quando a captura for compatível.</p>
+</div>
+<div class="benefit">
+<strong>Mais controle</strong>
+<p>Confirmações, registros e reversão de ajustes compatíveis.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="recursos" class="section darkband">
+<div class="wrap">
+<div class="kicker">NEXUS 8.0 BETA 1</div>
+<h2>ARSENAL DE <em>PERFORMANCE</em></h2>
+<p class="lead">
+Recursos projetados para análise e ajustes conscientes.
+A disponibilidade de métricas depende de sensores, permissões, jogos e da versão instalada.
+</p>
+
+<div class="grid">
+
+<article class="card">
+<div class="ico">⚡</div>
+<h3>Smart Optimization</h3>
+<p>Recomendações e aplicação assistida de ajustes opcionais do Windows, com controle do usuário.</p>
+</article>
+
+<article class="card">
+<div class="ico">▥</div>
+<h3>FPS Performance Lab</h3>
+<p>Benchmark antes/depois, tempo de quadro e relatórios comparativos em jogos compatíveis.</p>
+</article>
+
+<article class="card">
+<div class="ico">◉</div>
+<h3>Monitoramento de hardware</h3>
+<p>Diagnóstico de CPU, GPU, RAM e armazenamento; sensores adicionais quando disponíveis.</p>
+</article>
+
+<article class="card">
+<div class="ico">▣</div>
+<h3>Smart Process Cleaner</h3>
+<p>Classificação assistida de processos, seleção de opcionais e confirmação antes de finalizar.</p>
+</article>
+
+<article class="card">
+<div class="ico">⬡</div>
+<h3>Storage Care 2.0</h3>
+<p>Varredura de arquivos temporários com prévia e cuidados para evitar exclusões indevidas.</p>
+</article>
+
+<article class="card">
+<div class="ico">♻</div>
+<h3>Restore Center</h3>
+<p>Histórico e mecanismos de reversão para ajustes compatíveis realizados pelo Vykron.</p>
+</article>
+
+<article class="card">
+<div class="ico">🎮</div>
+<h3>Game Boost</h3>
+<p>Ferramentas para preparar o ambiente de jogo e revisar atividades em segundo plano.</p>
+</article>
+
+<article class="card">
+<div class="ico">▤</div>
+<h3>Relatórios e diagnóstico</h3>
+<p>Dados do sistema e registros das operações, para entender o que foi realmente alterado.</p>
+</article>
+
+<article class="card">
+<div class="ico">◈</div>
+<h3>FPS Overlay experimental</h3>
+<p>Visualização de métricas durante jogos, sujeita à compatibilidade e às permissões de captura.</p>
+</article>
+
+</div>
+</div>
+</section>
+
+<section id="especificacoes" class="section">
+<div class="wrap">
+<div class="kicker">ANTES DE INSTALAR</div>
+<h2>ESPECIFICAÇÕES <em>DO VYKRON</em></h2>
+<p class="lead">
+Informações da distribuição atual e requisitos conhecidos.
+A versão beta ainda precisa de testes em diferentes configurações.
+</p>
+
+<div class="split">
+<div class="spec">
+<h3>APLICATIVO</h3>
+<dl>
+<div><dt>Nome</dt><dd>Vykron Optimizer</dd></div>
+<div><dt>Edição</dt><dd>Nexus 8.0 Beta 1</dd></div>
+<div><dt>Plataforma alvo</dt><dd>Windows 11</dd></div>
+<div><dt>Distribuição</dt><dd>Vykron.exe</dd></div>
+<div><dt>Preço</dt><dd>Gratuito</dd></div>
+<div><dt>Tipo</dt><dd>Projeto independente (beta)</dd></div>
+</dl>
+</div>
+
+<div class="spec">
+<h3>COMPATIBILIDADE E CUIDADOS</h3>
+<dl>
+<div><dt>Sistema</dt><dd>Windows 11, 64 bits</dd></div>
+<div><dt>CPU / GPU</dt><dd>Detecção conforme suporte</dd></div>
+<div><dt>Permissões</dt><dd>Algumas ações exigem administrador</dd></div>
+<div><dt>Captura de FPS</dt><dd>Depende do jogo e do coletor</dd></div>
+<div><dt>Internet</dt><dd>Necessária para baixar</dd></div>
+<div><dt>Backup</dt><dd>Recomendado antes de ajustes</dd></div>
+</dl>
+</div>
+</div>
+
+<p class="note">
+* Ganhos de FPS, redução de latência e estabilidade não são garantidos.
+O resultado depende do computador, do jogo e do estado inicial do Windows.
+A disponibilidade de funções descritas pode variar nesta versão beta.
+</p>
+</div>
+</section>
+
+<section class="section" id="download">
+<div class="wrap">
+<div class="final">
+<div class="kicker">PRONTO PARA ENTRAR NO JOGO?</div>
+<h2>DESPERTE O <em>VYKRON</em></h2>
+<p>
+Baixe diretamente o executável do Vykron Optimizer para Windows 11.
+Sem pacote ZIP para o usuário final.
+</p>
+<a class="btn" href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/latest/download/Vykron.exe">
+⬇ DOWNLOAD DIRETO — VYKRON.EXE
+</a>
+<p style="font-size:12px">
+O arquivo é fornecido pelo GitHub Releases.
+A disponibilidade depende de uma versão publicada com o nome exato Vykron.exe.
+</p>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="foot">
+<div class="wrap">
+<span>© 2026 Vykron Optimizer • Projeto independente • Nexus 8.0 Beta 1</span>
+<span>
+Sem afiliação oficial com Valve, Riot Games, Epic Games,
+Rockstar Games ou Psyonix. Marcas e personagens pertencem
+aos respectivos titulares.
+</span>
+</div>
+</footer>
 
 </body>
 </html>
