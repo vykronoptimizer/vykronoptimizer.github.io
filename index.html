@@ -5,152 +5,130 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#08080c">
-<meta name="description" content="Vykron Optimizer — diagnóstico, monitoramento e ferramentas de otimização gamer para Windows.">
-<title>Vykron Optimizer | Maximize seu desempenho</title>
+<meta name="description" content="Vykron Optimizer Nexus 9 — diagnóstico, monitoramento, otimização reversível e ferramentas gamer para Windows.">
+<title>Vykron Optimizer | Nexus 9 Red Edition</title>
 
 <style>
-:root {
+:root{
   --bg:#08080c;
   --panel:#121017;
   --panel2:#1b111d;
-  --red:#ff244e;
-  --red-dark:#9d092e;
+  --red:#ed3153;
+  --red-dark:#9d1234;
   --white:#f8f7fa;
   --muted:#aaa4b2;
   --line:#592137;
+  --ice:#75d7e6;
 }
-
-* {box-sizing:border-box}
-
-html {
-  scroll-behavior:smooth;
-  scroll-padding-top:85px;
-}
-
-body {
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{
   margin:0;
   background:var(--bg);
   color:var(--white);
   font-family:"Segoe UI",Arial,sans-serif;
   overflow-x:hidden;
 }
-
-body::before {
+body::before{
   content:"";
   position:fixed;
   inset:0;
   z-index:-1;
   pointer-events:none;
-  background:
-    radial-gradient(ellipse at 50% 0%,#45102324,transparent 65%);
+  background:radial-gradient(ellipse at 50% 0%,#45102324,transparent 65%);
 }
-
-a {color:inherit;text-decoration:none}
-button {font:inherit}
-a:focus-visible {outline:2px solid white;outline-offset:4px}
-.red {color:var(--red)}
-.container {width:min(1220px,calc(100% - 40px));margin:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+a:focus-visible{outline:2px solid var(--ice);outline-offset:4px}
+.red{color:var(--red)}
+.ice{color:var(--ice)}
+.container{width:min(1220px,calc(100% - 40px));margin:auto}
 
 /* HEADER */
-
-header {
+header{
   height:72px;
   position:sticky;
   top:0;
   z-index:50;
   background:#08080cf2;
   backdrop-filter:blur(16px);
-  border-bottom:1px solid #ff244e30;
+  border-bottom:1px solid #ed315330;
 }
-
-.nav {
+.nav{
   height:100%;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:20px;
 }
-
-.brand {
+.brand{
   font-size:24px;
   font-weight:1000;
   letter-spacing:3px;
 }
-
-.brand span {color:var(--red)}
-
-nav {
-  display:flex;
-  align-items:center;
-  gap:25px;
-}
-
-nav a {
+.brand span{color:var(--red)}
+nav{display:flex;align-items:center;gap:25px}
+nav a{
   font-size:11px;
   font-weight:900;
   letter-spacing:1px;
   transition:color .2s;
 }
-
-nav a:hover {color:var(--red)}
-
-.nav-cta {
-  border:1px solid var(--red);
+nav a:hover{color:var(--red)}
+.nav-cta{
+  border:1px solid #ed315380;
+  border-radius:8px;
   padding:12px 20px;
-  background:#ff244e18;
-  color:#ff7189;
-  transition:.25s;
+  background:#ed315318;
+  color:#ff9aad;
+  transition:background .25s,transform .25s;
 }
-
-.nav-cta:hover {
-  background:var(--red);
+.nav-cta:hover{
+  background:#ed315340;
   color:white;
+  transform:translateY(-2px);
 }
 
-/* HERO ORIGINAL */
-
-.hero {
+/* HERO ORIGINAL — SEM RETÂNGULO NEON */
+.hero{
   position:relative;
   overflow:hidden;
   line-height:0;
   background:#050408;
 }
-
-.hero img {
+.hero img{
   display:block;
   width:100%;
   height:auto;
   pointer-events:none;
 }
-
-.hero-download {
+.hero-download{
   position:absolute;
   left:39%;
   top:72%;
   width:22%;
   height:9%;
   z-index:5;
-  background:transparent;
-  border:0;
-  box-shadow:none;
+  background:transparent!important;
+  border:0!important;
+  outline-offset:3px;
+  box-shadow:none!important;
   cursor:pointer;
 }
-
-.hero-download:hover {
-  background:transparent;
-  box-shadow:none;
+.hero-download:hover,
+.hero-download:active{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
 }
-
-.mobile-cta {display:none}
+.mobile-cta{display:none}
 
 /* TECH STRIP */
-
-.tech-strip {
+.tech-strip{
   background:linear-gradient(90deg,#100910,#250b19,#100910);
-  border-block:1px solid #ff244e45;
+  border-block:1px solid #ed315345;
 }
-
-.tech-inner {
+.tech-inner{
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -158,73 +136,54 @@ nav a:hover {color:var(--red)}
   gap:18px;
   padding:22px 0;
 }
-
-.tech-inner span {
+.tech-inner span{
   font-size:11px;
   font-weight:900;
   letter-spacing:1.5px;
   color:#d5c8d0;
 }
-
-.tech-inner b {
-  color:var(--red);
-  margin-right:8px;
-}
+.tech-inner b{color:var(--red);margin-right:8px}
 
 /* SECTIONS */
-
-.section {
-  position:relative;
-  padding:80px 0;
-}
-
-.section.dark {
-  background:
-    linear-gradient(180deg,#0b0a10,#130d16,#0b0a10);
+.section{position:relative;padding:80px 0}
+.section.dark{
+  background:linear-gradient(180deg,#0b0a10,#130d16,#0b0a10);
   border-block:1px solid #ffffff0a;
 }
-
-.heading {margin-bottom:38px}
-
-.kicker {
+.heading{margin-bottom:38px}
+.kicker{
   display:flex;
   align-items:center;
   gap:12px;
-  color:#ff5977;
+  color:#ff7892;
   font-size:11px;
   font-weight:900;
   letter-spacing:3px;
   text-transform:uppercase;
 }
-
-.kicker::before {
+.kicker::before{
   content:"";
   height:2px;
   width:30px;
   background:var(--red);
-  box-shadow:0 0 12px var(--red);
 }
-
-h1,h2,h3,p {margin-top:0}
-
-h2 {
+h1,h2,h3,p{margin-top:0}
+h2{
   font-size:clamp(31px,4vw,52px);
   line-height:1.1;
   letter-spacing:-1.5px;
   font-weight:1000;
   margin:15px 0;
 }
-
-.desc {
+.desc{
   color:var(--muted);
   font-size:15px;
   line-height:1.8;
-  max-width:760px;
+  max-width:800px;
 }
 
 /* COMMAND PANEL */
-
-.command-panel {
+.command-panel{
   position:relative;
   display:grid;
   grid-template-columns:1.1fr .9fr;
@@ -232,7 +191,7 @@ h2 {
   padding:40px;
   overflow:hidden;
   background:
-    radial-gradient(circle at 100% 0%,#ff244e20,transparent 45%),
+    radial-gradient(circle at 100% 0%,#ed315320,transparent 45%),
     linear-gradient(135deg,#1c111d,#0d0b12);
   border:1px solid #872b46;
   clip-path:polygon(
@@ -244,8 +203,7 @@ h2 {
     0 calc(100% - 22px)
   );
 }
-
-.command-panel::before {
+.command-panel::before{
   content:"";
   position:absolute;
   left:0;
@@ -254,32 +212,24 @@ h2 {
   height:3px;
   background:linear-gradient(90deg,var(--red),transparent);
 }
-
-.command-panel h3 {
+.command-panel h3{
   font-size:clamp(25px,3vw,39px);
   line-height:1.13;
   margin:17px 0;
 }
-
-.command-panel p {
-  color:#b9b0bc;
-  line-height:1.8;
-}
-
-.command-stats {
+.command-panel p{color:#b9b0bc;line-height:1.8}
+.command-stats{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
 }
-
-.command-stat {
+.command-stat{
   position:relative;
   background:#08080dc9;
   border:1px solid #63263c;
   padding:22px;
 }
-
-.command-stat::after {
+.command-stat::after{
   content:"";
   position:absolute;
   right:0;
@@ -289,44 +239,40 @@ h2 {
   border-right:2px solid var(--red);
   border-bottom:2px solid var(--red);
 }
-
-.command-stat strong {
+.command-stat strong{
   display:block;
   font-size:28px;
-  color:#ff4568;
+  color:var(--ice);
   letter-spacing:1px;
 }
-
-.command-stat small {
+.command-stat small{
   color:#b7acb9;
   font-size:10px;
   letter-spacing:1px;
 }
 
-/* FEATURES */
-
-.feature-grid {
+/* FEATURE CARDS */
+.feature-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:18px;
 }
-
-.feature {
+.feature{
   position:relative;
   overflow:hidden;
-  min-height:230px;
+  min-height:235px;
   padding:28px;
   background:
-    radial-gradient(circle at 100% 0%,#ff244e10,transparent 50%),
+    radial-gradient(circle at 100% 0%,#ed315310,transparent 50%),
     linear-gradient(145deg,#1d1520,#100e15);
   border:1px solid #51243a;
+  border-radius:12px;
   transition:
-    transform .25s,
-    border-color .25s,
-    box-shadow .25s;
+    transform .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
 }
-
-.feature::before {
+.feature::before{
   content:"";
   position:absolute;
   top:0;
@@ -335,216 +281,205 @@ h2 {
   height:2px;
   background:linear-gradient(90deg,var(--red),transparent);
 }
-
-.feature::after {
+.feature::after{
   content:"";
   position:absolute;
   right:-25px;
   top:-25px;
   width:90px;
   height:90px;
-  border:1px solid #ff244e20;
+  border:1px solid #ed315320;
   transform:rotate(45deg);
+  pointer-events:none;
 }
-
-.feature:hover {
-  transform:translateY(-5px);
+.feature:hover{
+  transform:translateY(-6px);
   border-color:var(--red);
-  box-shadow:0 18px 40px #ff244e16;
+  box-shadow:0 18px 40px #ed31531a;
 }
-
-.feature-icon {
+.feature-icon{
   display:grid;
   place-items:center;
   width:52px;
   height:52px;
-  background:#ff244e12;
-  border:1px solid #ff244e55;
-  color:#ff5474;
+  border-radius:10px;
+  background:#ed315312;
+  border:1px solid #ed315355;
+  color:#ff7892;
   font-size:25px;
   margin-bottom:24px;
 }
-
-.feature h3 {
-  font-size:18px;
-  margin-bottom:12px;
-}
-
-.feature p {
+.feature h3{font-size:18px;margin-bottom:12px}
+.feature p{
   color:#aaa3b1;
   font-size:13px;
   line-height:1.8;
   margin-bottom:0;
 }
-
-.feature-tag {
+.feature-tag{
   display:inline-block;
   margin-top:20px;
-  color:#ff7890;
+  color:#ff8ca2;
   font-size:10px;
   font-weight:900;
   letter-spacing:1.5px;
 }
+.feature-tag.beta{color:var(--ice)}
 
 /* SPECS */
-
-.spec-grid {
+.spec-grid{
   display:grid;
   grid-template-columns:1.1fr .9fr;
   gap:20px;
 }
-
-.spec-box {
+.spec-box{
   position:relative;
   overflow:hidden;
   padding:34px;
   border:1px solid #752941;
+  border-radius:14px;
   background:linear-gradient(145deg,#201421,#0d0b12);
 }
-
-.spec-box::before {
-  content:"";
-  position:absolute;
-  right:-65px;
-  top:-65px;
-  width:180px;
-  height:180px;
-  border:1px solid #ff244e25;
-  transform:rotate(45deg);
-  pointer-events:none;
-}
-
-.spec-box h3 {
-  font-size:21px;
-  margin-bottom:25px;
-}
-
-.spec-row {
+.spec-box h3{font-size:21px;margin-bottom:25px}
+.spec-row{
   display:flex;
   justify-content:space-between;
   gap:20px;
   padding:16px 0;
   border-bottom:1px solid #ffffff13;
 }
-
-.spec-row:last-child {border:0}
-
-.spec-row span {
-  font-size:13px;
-  color:#aaa3b1;
-}
-
-.spec-row strong {
-  font-size:13px;
-  text-align:right;
-}
-
-.spec-logo {
+.spec-row:last-child{border:0}
+.spec-row span{font-size:13px;color:#aaa3b1}
+.spec-row strong{font-size:13px;text-align:right}
+.spec-logo{
   min-height:365px;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  background:
-    radial-gradient(circle,#5a122b66,transparent 65%),
-    #100b13;
+  background:radial-gradient(circle,#5a122b66,transparent 65%),#100b13;
 }
-
-.spec-logo .v {
+.spec-logo .v{
   font-size:clamp(135px,17vw,230px);
   line-height:.95;
   font-weight:1000;
   font-style:italic;
-  color:#f51f49;
-  text-shadow:0 0 70px #ff244e65;
+  color:#ed3153;
+  text-shadow:0 0 70px #ed315365;
   transform:skewX(-8deg);
 }
-
-.spec-logo strong {
-  font-size:24px;
-  letter-spacing:7px;
-}
-
-.spec-logo p {
+.spec-logo strong{font-size:24px;letter-spacing:7px}
+.spec-logo p{
   margin:12px 0 0;
   color:#b8aab7;
   font-size:11px;
   letter-spacing:3px;
 }
-
-.pills {
+.pills{
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
   gap:8px;
   margin-top:26px;
 }
-
-.pills span {
-  border:1px solid #ff244e60;
-  background:#ff244e10;
+.pills span{
+  border:1px solid #ed315360;
+  border-radius:6px;
+  background:#ed315310;
   padding:8px 12px;
   font-size:10px;
   font-weight:900;
-  color:#ff7089;
+  color:#ff8ca2;
+}
+
+/* NEXUS 9 HIGHLIGHTS */
+.upgrade-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.upgrade{
+  padding:30px;
+  background:linear-gradient(145deg,#1c1420,#0d0c12);
+  border:1px solid #67304a;
+  border-radius:14px;
+  transition:transform .3s,border-color .3s;
+}
+.upgrade:hover{
+  transform:translateY(-5px);
+  border-color:var(--ice);
+}
+.upgrade .number{
+  display:inline-block;
+  font-size:12px;
+  font-weight:900;
+  color:var(--ice);
+  letter-spacing:2px;
+  margin-bottom:15px;
+}
+.upgrade h3{font-size:20px;margin-bottom:12px}
+.upgrade p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+  margin:0;
+}
+.upgrade-status{
+  display:inline-block;
+  margin-top:17px;
+  padding:7px 11px;
+  background:#75d7e610;
+  border:1px solid #75d7e640;
+  border-radius:6px;
+  color:var(--ice);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1px;
 }
 
 /* STEPS */
-
-.steps {
+.steps{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:18px;
 }
-
-.step {
+.step{
   padding:30px;
   border:1px solid #51263a;
+  border-radius:12px;
   background:linear-gradient(145deg,#1c1320,#0e0c13);
 }
-
-.step-num {
+.step-num{
   color:var(--red);
   font-size:42px;
   font-weight:1000;
   line-height:1;
   margin-bottom:22px;
 }
+.step h3{font-size:19px;margin-bottom:12px}
+.step p{color:#aaa3b1;font-size:13px;line-height:1.8}
 
-.step h3 {
-  font-size:19px;
-  margin-bottom:12px;
-}
-
-.step p {
-  color:#aaa3b1;
-  font-size:13px;
-  line-height:1.8;
-}
-
-/* GAMES WITH IMAGES */
-
-.games-grid {
+/* GAME CARDS — IMAGENS ORIGINAIS */
+.games-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:18px;
 }
-
-.game {
+.game{
   position:relative;
   isolation:isolate;
   overflow:hidden;
   min-height:230px;
   border:1px solid #68253e;
+  border-radius:12px;
   background:#180d17;
   transition:
     transform .3s,
     border-color .3s,
     box-shadow .3s;
 }
-
-.game img {
+.game img{
   position:absolute;
   inset:0;
   width:100%;
@@ -553,8 +488,7 @@ h2 {
   z-index:-2;
   transition:transform .5s,filter .3s;
 }
-
-.game::after {
+.game::after{
   content:"";
   position:absolute;
   inset:0;
@@ -567,8 +501,7 @@ h2 {
   );
   pointer-events:none;
 }
-
-.game::before {
+.game::before{
   content:"";
   position:absolute;
   top:0;
@@ -578,130 +511,103 @@ h2 {
   background:var(--red);
   z-index:2;
 }
-
-.game:hover {
+.game:hover{
   transform:translateY(-5px);
   border-color:var(--red);
-  box-shadow:0 15px 40px #ff244e25;
+  box-shadow:0 15px 40px #ed315325;
 }
-
-.game:hover img {
+.game:hover img{
   transform:scale(1.09);
   filter:saturate(1.15);
 }
-
-.game-content {
+.game-content{
   position:absolute;
   bottom:0;
   left:0;
   right:0;
   padding:23px;
 }
-
-.game-content small {
+.game-content small{
   display:block;
-  color:#ff7d95;
+  color:#ff8ca2;
   font-size:10px;
   font-weight:900;
   letter-spacing:2px;
   margin-bottom:9px;
 }
-
-.game-content strong {
+.game-content strong{
   font-size:20px;
   font-weight:1000;
   text-shadow:0 2px 12px #000;
 }
 
 /* DOWNLOAD */
-
-.download-panel {
+.download-panel{
   position:relative;
   overflow:hidden;
   text-align:center;
   padding:65px 25px;
-  border:1px solid #c42d50;
+  border:1px solid #a72e4b;
+  border-radius:18px;
   background:
-    radial-gradient(ellipse at center,#68132d60,transparent 70%),
+    radial-gradient(ellipse at center,#68132d40,transparent 70%),
     linear-gradient(135deg,#1d111d,#0b0a11);
 }
-
 .download-panel::before,
-.download-panel::after {
+.download-panel::after{
   content:"";
   position:absolute;
   width:120px;
   height:120px;
-  border:2px solid #ff244e70;
+  border:1px solid #ed315340;
   transform:rotate(45deg);
   pointer-events:none;
 }
-
-.download-panel::before {
-  top:-70px;
-  left:-70px;
-}
-
-.download-panel::after {
-  bottom:-70px;
-  right:-70px;
-}
-
-.download-panel h2 {
-  font-size:clamp(32px,5vw,58px);
-}
-
-.download-panel p {
-  color:#bdb3c0;
-  line-height:1.8;
-}
-
-.download-btn {
+.download-panel::before{top:-70px;left:-70px}
+.download-panel::after{bottom:-70px;right:-70px}
+.download-panel h2{font-size:clamp(32px,5vw,58px)}
+.download-panel p{color:#bdb3c0;line-height:1.8}
+.download-btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
   padding:19px 36px;
   margin-top:18px;
   border:1px solid #ff7890;
-  background:linear-gradient(115deg,#ff3559,#a70b31);
+  border-radius:10px;
+  background:linear-gradient(115deg,#ed3153,#a70b31);
+  color:white;
   font-size:15px;
   font-weight:1000;
   letter-spacing:1px;
-  box-shadow:0 12px 35px #ff244e35;
+  box-shadow:0 12px 35px #ed315325;
   transition:transform .25s,box-shadow .25s;
 }
-
-.download-btn:hover {
+.download-btn:hover{
   transform:translateY(-3px);
-  box-shadow:0 16px 45px #ff244e60;
+  box-shadow:0 16px 45px #ed315345;
 }
-
-.download-meta {
+.download-meta{
   margin-top:22px;
   color:#bdb3c0;
   font-size:11px;
   font-weight:900;
   letter-spacing:1px;
 }
-
-.download-meta span {
-  color:var(--red);
-  margin:0 12px;
-}
-
-.release-link {
+.download-meta span{color:var(--red);margin:0 12px}
+.release-link{
   display:inline-block;
   margin-top:24px;
   font-size:12px;
-  color:#ff7d95;
+  color:#ff8ca2;
   text-decoration:underline;
   text-underline-offset:4px;
 }
-
-.notice {
+.notice{
   margin-top:22px;
   padding:20px;
   border:1px solid #49313d;
+  border-radius:12px;
   background:#151119;
   color:#aaa3b1;
   font-size:12px;
@@ -709,108 +615,76 @@ h2 {
 }
 
 /* FOOTER */
-
-footer {
+footer{
   padding:35px 0;
-  border-top:1px solid #ff244e30;
+  border-top:1px solid #ed315330;
   color:#928995;
   font-size:12px;
 }
-
-.footer-inner {
+.footer-inner{
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:20px;
   flex-wrap:wrap;
 }
-
-.footer-brand {
+.footer-brand{
   font-weight:1000;
   letter-spacing:2px;
   color:white;
 }
-
-.footer-brand span {color:var(--red)}
+.footer-brand span{color:var(--red)}
 
 /* RESPONSIVE */
-
-@media(max-width:960px) {
-  .command-panel,
-  .spec-grid {
-    grid-template-columns:1fr;
-  }
-
-  .feature-grid,
-  .games-grid,
-  .steps {
+@media(max-width:960px){
+  .command-panel,.spec-grid{grid-template-columns:1fr}
+  .feature-grid,.games-grid,.steps{
     grid-template-columns:repeat(2,1fr);
   }
 }
-
-@media(max-width:650px) {
-  header {height:64px}
-  .brand {font-size:19px}
-  nav {gap:10px}
-
-  nav a:not(.nav-cta) {display:none}
-
-  .nav-cta {
-    font-size:10px;
-    padding:10px 13px;
-  }
-
-  .hero img {
+@media(max-width:650px){
+  header{height:64px}
+  .brand{font-size:19px}
+  nav{gap:10px}
+  nav a:not(.nav-cta){display:none}
+  .nav-cta{font-size:10px;padding:10px 13px}
+  .hero img{
     width:155%;
     max-width:none;
     margin-left:-27.5%;
   }
-
-  .hero-download {display:none}
-
-  .mobile-cta {
+  .hero-download{display:none}
+  .mobile-cta{
     display:block;
     padding:18px;
     text-align:center;
   }
-
-  .mobile-cta .download-btn {
+  .mobile-cta .download-btn{
     width:100%;
     max-width:360px;
     margin:0;
   }
-
-  .section {padding:55px 0}
-  .command-panel {padding:25px}
-  .command-stats {gap:9px}
-  .command-stat {padding:15px}
-  .command-stat strong {font-size:20px}
-
-  .feature-grid,
-  .games-grid,
-  .steps {
+  .section{padding:55px 0}
+  .command-panel{padding:25px}
+  .command-stats{gap:9px}
+  .command-stat{padding:15px}
+  .command-stat strong{font-size:20px}
+  .feature-grid,.games-grid,.steps,.upgrade-grid{
     grid-template-columns:1fr;
   }
-
-  .tech-inner {justify-content:center}
-  .tech-inner span {font-size:10px}
-  .spec-box {padding:23px}
-  .spec-logo {min-height:290px}
-  .game {min-height:230px}
-  .download-panel {padding:45px 18px}
-
-  .download-btn {
-    padding:17px 20px;
-    font-size:12px;
-  }
+  .tech-inner{justify-content:center}
+  .tech-inner span{font-size:10px}
+  .spec-box{padding:23px}
+  .spec-logo{min-height:290px}
+  .game{min-height:230px}
+  .download-panel{padding:45px 18px}
+  .download-btn{padding:17px 20px;font-size:12px}
+  .spec-row{flex-direction:column;gap:6px}
+  .spec-row strong{text-align:left}
 }
-
-@media(prefers-reduced-motion:reduce) {
-  html {scroll-behavior:auto}
-
-  *,*::before,*::after {
-    transition:none!important;
-  }
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important}
 }
 </style>
 </head>
@@ -820,27 +694,26 @@ footer {
 <header>
   <div class="container nav">
     <a href="#inicio" class="brand"><span>V</span>YKRON</a>
-
     <nav aria-label="Menu principal">
       <a href="#sobre">SOBRE</a>
       <a href="#recursos">RECURSOS</a>
+      <a href="#nexus9">NEXUS 9</a>
       <a href="#especificacoes">ESPECIFICAÇÕES</a>
       <a href="#jogos">JOGOS</a>
-      <a class="nav-cta" href="#download">DOWNLOAD</a>
+      <a class="nav-cta" data-download href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/latest/download/Vykron.exe">DOWNLOAD</a>
     </nav>
   </div>
 </header>
 
 <main>
 
-<!-- CAPA PRINCIPAL -->
+<!-- CAPA PRINCIPAL ORIGINAL -->
 <section class="hero" id="inicio">
   <img
     src="./vykron-hero-novo.png"
     alt="Vykron Optimizer — Maximize seu desempenho"
     fetchpriority="high"
   >
-
   <a
     class="hero-download"
     data-download
@@ -860,9 +733,9 @@ footer {
 <!-- TECH STRIP -->
 <div class="tech-strip">
   <div class="container tech-inner">
-    <span><b>◆</b> PERFORMANCE</span>
+    <span><b>◆</b> NEXUS 9</span>
     <span><b>◆</b> HARDWARE MONITOR</span>
-    <span><b>◆</b> FPS BENCHMARK</span>
+    <span><b>◆</b> FPS BENCHMARK BETA</span>
     <span><b>◆</b> SMART OPTIMIZATION</span>
   </div>
 </div>
@@ -874,15 +747,16 @@ footer {
       <div>
         <div class="kicker">NEXT LEVEL PERFORMANCE</div>
         <h3>O CONTROLE DO SEU PC <span class="red">COMEÇA AQUI.</span></h3>
-
         <p>
-          O Vykron Optimizer centraliza diagnóstico de hardware,
+          O Vykron Optimizer reúne diagnóstico de hardware,
           monitoramento, gerenciamento de processos e ajustes
           opcionais do Windows em uma interface gamer.
         </p>
-
         <p>
-          Mais informações para decidir o que realmente vale a pena ajustar.
+          A linha Nexus 9 concentra melhorias de segurança,
+          diagnóstico, detecção de jogos e recuperação de
+          configurações, com foco em evolução gradual e
+          resultados verificáveis.
         </p>
       </div>
 
@@ -891,17 +765,14 @@ footer {
           <strong>CPU</strong>
           <small>DIAGNÓSTICO</small>
         </div>
-
         <div class="command-stat">
           <strong>GPU</strong>
           <small>MONITORAMENTO</small>
         </div>
-
         <div class="command-stat">
           <strong>RAM</strong>
           <small>PROCESSOS</small>
         </div>
-
         <div class="command-stat">
           <strong>FPS</strong>
           <small>BENCHMARK EXPERIMENTAL</small>
@@ -914,14 +785,13 @@ footer {
 <!-- RECURSOS -->
 <section class="section dark" id="recursos">
   <div class="container">
-
     <div class="heading">
       <div class="kicker">VYKRON TECHNOLOGY</div>
       <h2>ARSENAL DE <span class="red">OTIMIZAÇÃO.</span></h2>
-
       <p class="desc">
-        Ferramentas para analisar, monitorar e administrar o desempenho
-        do computador. Alguns recursos ainda estão em validação.
+        Ferramentas para analisar, monitorar e administrar
+        o desempenho do computador. Alguns recursos
+        ainda estão em validação.
       </p>
     </div>
 
@@ -930,64 +800,128 @@ footer {
       <article class="feature">
         <div class="feature-icon">⚡</div>
         <h3>Smart Optimization</h3>
-        <p>Gerenciamento de ajustes opcionais do Windows, com foco em controle e reversibilidade.</p>
+        <p>Gerenciamento de ajustes opcionais do Windows com análise, confirmação e foco em reversibilidade.</p>
         <span class="feature-tag">SYSTEM CONTROL</span>
       </article>
 
       <article class="feature">
         <div class="feature-icon">◈</div>
         <h3>FPS Performance Lab</h3>
-        <p>Ferramentas experimentais de medição de FPS e frametime para comparar sessões.</p>
-        <span class="feature-tag">EXPERIMENTAL</span>
+        <p>Ferramentas experimentais para captura de FPS, frametime e comparação de sessões. A captura ainda exige validação.</p>
+        <span class="feature-tag beta">EXPERIMENTAL</span>
       </article>
 
       <article class="feature">
         <div class="feature-icon">◉</div>
         <h3>Hardware Monitor</h3>
-        <p>Informações de CPU, GPU, RAM, armazenamento e sensores disponíveis.</p>
+        <p>Informações de CPU, GPU, RAM, armazenamento e sensores disponíveis, conforme compatibilidade do hardware.</p>
         <span class="feature-tag">HARDWARE DATA</span>
       </article>
 
       <article class="feature">
         <div class="feature-icon">▣</div>
         <h3>Smart Process Cleaner</h3>
-        <p>Classificação assistida de processos opcionais e confirmação antes de encerrar.</p>
+        <p>Classificação assistida de processos opcionais, proteção de processos essenciais e confirmação antes de encerrar.</p>
         <span class="feature-tag">PROCESS CONTROL</span>
       </article>
 
       <article class="feature">
         <div class="feature-icon">⬡</div>
         <h3>Storage Care</h3>
-        <p>Análise de arquivos temporários e opções de limpeza com revisão.</p>
+        <p>Análise de arquivos temporários, prévia de limpeza e relatórios para revisar os resultados.</p>
         <span class="feature-tag">STORAGE TOOLS</span>
       </article>
 
       <article class="feature">
         <div class="feature-icon">♻</div>
         <h3>Restore Center</h3>
-        <p>Recursos de restauração para alterações registradas e compatíveis.</p>
-        <span class="feature-tag">RESTORE OPTIONS</span>
+        <p>Histórico de alterações e identificação de sessões interrompidas do Game Boost que precisam de restauração.</p>
+        <span class="feature-tag">RECOVERY TOOLS</span>
       </article>
 
       <article class="feature">
         <div class="feature-icon">⚙</div>
         <h3>Game Boost</h3>
-        <p>Gerenciamento de configurações opcionais relacionadas a jogos.</p>
+        <p>Gerenciamento de configurações relacionadas a jogos, com melhorias no registro de recuperação quando operações falham.</p>
         <span class="feature-tag">GAMING TOOLS</span>
       </article>
 
       <article class="feature">
         <div class="feature-icon">▤</div>
         <h3>Performance Reports</h3>
-        <p>Diagnósticos e comparações baseadas nos dados coletados.</p>
+        <p>Diagnósticos, registros de operações e comparações baseadas nos dados realmente coletados.</p>
         <span class="feature-tag">DATA ANALYSIS</span>
       </article>
 
       <article class="feature">
         <div class="feature-icon">▥</div>
         <h3>FPS Overlay</h3>
-        <p>Monitoramento experimental durante jogos compatíveis, sujeito a validação.</p>
-        <span class="feature-tag">LIVE MONITORING</span>
+        <p>HUD de CPU, GPU, RAM e captura experimental de FPS durante jogos compatíveis.</p>
+        <span class="feature-tag beta">LIVE MONITORING BETA</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- NEXUS 9 -->
+<section class="section" id="nexus9">
+  <div class="container">
+    <div class="heading">
+      <div class="kicker">NEXUS 9 · CONSOLIDAÇÃO INICIAL</div>
+      <h2>UMA NOVA FASE. <span class="red">MAIS CONTROLE.</span></h2>
+      <p class="desc">
+        A atualização Nexus 9 inicia uma fase de consolidação
+        do Vykron. As melhorias abaixo se concentram em
+        segurança operacional, recuperação e diagnóstico.
+        A edição Ultimate completa ainda está em desenvolvimento.
+      </p>
+    </div>
+
+    <div class="upgrade-grid">
+
+      <article class="upgrade">
+        <span class="number">UPGRADE 01</span>
+        <h3>GAME BOOST MAIS SEGURO</h3>
+        <p>
+          Melhorias no tratamento de falhas ao ativar
+          planos de energia, preservando informações
+          necessárias para recuperação.
+        </p>
+        <span class="upgrade-status">NEXUS 9 · BETA</span>
+      </article>
+
+      <article class="upgrade">
+        <span class="number">UPGRADE 02</span>
+        <h3>RESTORE CENTER APRIMORADO</h3>
+        <p>
+          Identificação de sessões interrompidas
+          do Game Boost e situações que podem
+          exigir restauração manual.
+        </p>
+        <span class="upgrade-status">NEXUS 9 · BETA</span>
+      </article>
+
+      <article class="upgrade">
+        <span class="number">UPGRADE 03</span>
+        <h3>MAIS JOGOS RECONHECIDOS</h3>
+        <p>
+          Lista ampliada de executáveis conhecidos
+          para auxiliar a identificação de jogos.
+          A detecção universal ainda não está disponível.
+        </p>
+        <span class="upgrade-status">COMPATIBILIDADE EM EVOLUÇÃO</span>
+      </article>
+
+      <article class="upgrade">
+        <span class="number">UPGRADE 04</span>
+        <h3>DIAGNÓSTICO DE FPS</h3>
+        <p>
+          Melhor identificação de problemas na
+          captura e das dependências do PresentMon.
+          O FPS em tempo real permanece experimental.
+        </p>
+        <span class="upgrade-status">CAPTURA EM VALIDAÇÃO</span>
       </article>
 
     </div>
@@ -995,9 +929,8 @@ footer {
 </section>
 
 <!-- ESPECIFICAÇÕES -->
-<section class="section" id="especificacoes">
+<section class="section dark" id="especificacoes">
   <div class="container">
-
     <div class="heading">
       <div class="kicker">TECHNICAL SPECIFICATIONS</div>
       <h2>CONHEÇA O <span class="red">VYKRON.</span></h2>
@@ -1005,13 +938,17 @@ footer {
     </div>
 
     <div class="spec-grid">
-
       <div class="spec-box">
         <h3>ESPECIFICAÇÕES <span class="red">TÉCNICAS</span></h3>
 
         <div class="spec-row">
           <span>Software</span>
           <strong>Vykron Optimizer</strong>
+        </div>
+
+        <div class="spec-row">
+          <span>Linha de desenvolvimento</span>
+          <strong>Nexus 9</strong>
         </div>
 
         <div class="spec-row">
@@ -1059,26 +996,24 @@ footer {
           <span>CPU</span>
           <span>GPU</span>
           <span>RAM</span>
-          <span>FPS</span>
+          <span>FPS BETA</span>
           <span>WINDOWS</span>
+          <span>NEXUS 9</span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- DESEMPENHO -->
-<section class="section dark" id="desempenho">
+<section class="section" id="desempenho">
   <div class="container">
-
     <div class="heading">
       <div class="kicker">PERFORMANCE INTELLIGENCE</div>
       <h2>DADOS REAIS. <span class="red">DECISÕES MELHORES.</span></h2>
-
       <p class="desc">
-        Um fluxo de análise para compreender o computador
-        antes de aplicar ajustes.
+        Nosso objetivo é oferecer um fluxo de análise
+        para compreender o computador antes de aplicar ajustes.
       </p>
     </div>
 
@@ -1098,24 +1033,22 @@ footer {
       <div class="step">
         <div class="step-num">03</div>
         <h3>COMPARE</h3>
-        <p>Use medições disponíveis para comparar o comportamento antes e depois.</p>
+        <p>Use medições disponíveis para comparar o comportamento antes e depois. Sem ganhos inventados.</p>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- JOGOS COM IMAGENS -->
-<section class="section" id="jogos">
+<!-- JOGOS COM IMAGENS ORIGINAIS -->
+<section class="section dark" id="jogos">
   <div class="container">
-
     <div class="heading">
       <div class="kicker">BUILT FOR GAMERS</div>
       <h2>FEITO PARA <span class="red">GAMERS.</span></h2>
-
       <p class="desc">
         Jogos que inspiram o desenvolvimento do Vykron.
-        Ganhos de FPS dependem do hardware e das configurações.
+        O suporte varia conforme o título, hardware e versão
+        do Windows. Ganhos de FPS não são garantidos.
       </p>
     </div>
 
@@ -1174,9 +1107,8 @@ footer {
 </section>
 
 <!-- DOWNLOAD -->
-<section class="section dark" id="download">
+<section class="section" id="download">
   <div class="container">
-
     <div class="download-panel">
 
       <div class="kicker" style="justify-content:center">
@@ -1186,8 +1118,9 @@ footer {
       <h2>ASSUMA O <span class="red">CONTROLE.</span></h2>
 
       <p>
-        Vykron Optimizer — diagnóstico, monitoramento
-        e ferramentas de desempenho em uma interface gamer.
+        Vykron Optimizer — diagnóstico, monitoramento,
+        ferramentas de desempenho e melhorias da linha
+        Nexus 9 em uma interface gamer.
       </p>
 
       <a
@@ -1199,7 +1132,10 @@ footer {
       </a>
 
       <div class="download-meta">
-        WINDOWS 11 <span>◆</span> 64 BITS <span>◆</span> GRATUITO
+        WINDOWS 11 <span>◆</span>
+        64 BITS <span>◆</span>
+        GRATUITO <span>◆</span>
+        BETA
       </div>
 
       <a
@@ -1212,12 +1148,16 @@ footer {
     </div>
 
     <div class="notice">
-      <strong>AVISO:</strong> O Vykron Optimizer está em desenvolvimento.
+      <strong>AVISO:</strong>
+      O Vykron Optimizer está em desenvolvimento.
       Algumas funcionalidades, incluindo a captura de FPS,
-      ainda estão em validação. Não há garantia de aumento
-      de desempenho. Faça backup antes de alterações importantes.
+      ainda estão em validação e podem não funcionar
+      em todos os computadores. Não há garantia de aumento
+      de desempenho. Faça backup antes de alterações
+      importantes e revise as operações antes de aplicá-las.
+      O botão de download aponta para o executável da
+      Release mais recente publicada no GitHub.
     </div>
-
   </div>
 </section>
 
@@ -1228,9 +1168,11 @@ footer {
     <div class="footer-brand">
       <span>V</span>YKRON OPTIMIZER
     </div>
-
     <div>
       © <span id="year">2026</span> Vykron Optimizer · Projeto independente.
+    </div>
+    <div>
+      NEXUS 9 · RED EDITION
     </div>
   </div>
 </footer>
