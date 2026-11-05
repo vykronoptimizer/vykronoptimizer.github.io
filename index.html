@@ -3,105 +3,533 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#08080c">
 <meta name="description" content="Vykron Optimizer: diagnóstico, monitoramento e otimizações reversíveis para Windows.">
-<title>VYK RON OPTIMIZER | Maximize seu desempenho</title>
+<title>Vykron Optimizer | Maximize seu desempenho</title>
+
 <style>
-:root{--bg:#08080c;--panel:#14141d;--red:#ff244e;--text:#f7f7fb;--muted:#b6afbb}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
-a{text-decoration:none;color:inherit}
-button{font:inherit}
-header{height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:#09090eea;backdrop-filter:blur(16px);position:sticky;top:0;z-index:30;border-bottom:1px solid #ffffff16}
-.logo{font-weight:1000;font-size:25px;letter-spacing:3px}
-.logo span,.red{color:var(--red)}
-nav{display:flex;align-items:center;gap:25px;font-size:12px;font-weight:800;letter-spacing:.7px}
-nav a:not(.btn):hover{color:var(--red)}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:49px;padding:15px 27px;border:1px solid #ff7287;background:linear-gradient(115deg,#ff3056,#a70b31);border-radius:7px;font-weight:900;font-size:13px;letter-spacing:.7px;box-shadow:0 0 28px #ff244e50;transition:transform .25s,box-shadow .25s,filter .25s}
-.btn:hover{transform:translateY(-4px) scale(1.025);box-shadow:0 0 48px #ff244e90;filter:brightness(1.13)}
-.btn:focus-visible,a:focus-visible{outline:3px solid #fff;outline-offset:4px}
-.hero{position:relative;isolation:isolate;overflow:hidden;background:#08080c;line-height:0}
-.hero-art{display:block;width:100%;height:auto;min-height:400px;object-fit:cover;transition:filter .35s,transform .5s;user-select:none;pointer-events:none}
-.hero:hover .hero-art{filter:saturate(1.1) contrast(1.04)}
-.cursor-glow{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(circle 230px at var(--mx,50%) var(--my,50%),#ff254b3c 0%,#ff254b12 38%,transparent 72%);mix-blend-mode:screen}
-.hero.is-hovered .cursor-glow{opacity:1}
-.hero-zone{position:absolute;z-index:3;pointer-events:none;opacity:0;transition:opacity .25s;box-shadow:inset 0 0 95px #ff244e12;border:1px solid #ff244e55;border-radius:12px}
-.hero-zone.active{opacity:1}
-.hero-zone .zone-label{position:absolute;bottom:10px;left:12px;padding:9px 13px;border-radius:5px;background:#08080ce0;border:1px solid #ff244e77;color:#fff;font-size:12px;font-weight:900;letter-spacing:1px;line-height:1.3;box-shadow:0 0 18px #ff244e66}
-.zone-cs{left:1%;top:2%;width:34%;height:47%}
-.zone-gta{left:1%;top:51%;width:34%;height:46%}
-.zone-valorant{left:66%;top:2%;width:33%;height:50%}
-.zone-games{left:66%;top:55%;width:33%;height:43%}
-.hero-download{position:absolute;left:40%;top:59%;width:20%;height:10%;z-index:5;border-radius:9px;transition:box-shadow .2s,background .2s;display:block}
-.hero-download:hover,.hero-download.near{background:#ff244e10;box-shadow:0 0 30px 12px #ff244e40,inset 0 0 22px #ff244e45}
-.hero-download span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-.mobile-hero-cta{display:none;text-align:center;padding:18px;background:#0d0b12}
-.hero-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;gap:18px;text-align:center;background:radial-gradient(circle,#370b1c,#08080c 70%);z-index:1;padding:30px}
-.hero-fallback strong{font-size:clamp(42px,8vw,100px);letter-spacing:5px}
-.hero-fallback p{font-size:clamp(17px,3vw,36px);line-height:1.3;font-weight:900;margin:0}
-.strip{display:flex;justify-content:center;gap:12px 26px;flex-wrap:wrap;padding:25px 5%;background:#101016;border-top:1px solid #ff244e45;border-bottom:1px solid #ff244e45}
-.strip span{border-left:2px solid var(--red);padding:10px 15px;font-size:12px;font-weight:800;letter-spacing:.4px}
-section{padding:90px 6%;max-width:1450px;margin:auto}
-.section-title{text-align:center;font-size:clamp(30px,4vw,49px);margin:0 0 15px;font-weight:1000}
-.subtitle{text-align:center;color:var(--muted);max-width:760px;margin:0 auto 45px;line-height:1.75;font-size:15px}
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.card{--cx:50%;--cy:50%;position:relative;overflow:hidden;padding:30px;background:linear-gradient(140deg,#1a1a24,#101016);border:1px solid #ffffff18;border-top:2px solid #ff244e77;border-radius:10px;transition:transform .25s,border-color .25s,box-shadow .25s}
-.card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle 200px at var(--cx) var(--cy),#ff244e1e,transparent 70%);opacity:0;transition:opacity .2s;pointer-events:none}
-.card:hover{transform:translateY(-7px);border-color:#ff244e88;box-shadow:0 15px 38px #0008}
-.card:hover:before{opacity:1}
-.card>*{position:relative}
-.ico{font-size:29px;color:var(--red)}
-.card h3{font-size:19px;margin:20px 0 10px}
-.card p{color:#bcb4c1;font-size:14px;line-height:1.75;margin:0}
-.features{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px;margin:0 auto 45px}
-.feature{padding:23px 18px;background:#111119;border:1px solid #ffffff16;border-radius:9px}
-.feature strong{display:block;color:#fff;margin-bottom:10px;font-size:15px}
-.feature p{color:var(--muted);font-size:13px;line-height:1.65;margin:0}
-.game-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
-.game{min-height:170px;display:flex;align-items:end;position:relative;overflow:hidden;border-radius:9px;background:linear-gradient(145deg,#391326,#101016);border:1px solid #ffffff16;transition:transform .25s,border-color .25s}
-.game:hover{transform:translateY(-5px);border-color:#ff244e88}
-.game strong{padding:45px 20px 20px;width:100%;background:linear-gradient(transparent,#08080cf0);position:relative;font-size:19px;letter-spacing:.6px}
-.game:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 15%,#ff244e3a,transparent 60%)}
-.download{text-align:center;background:radial-gradient(ellipse at center,#390a20,#0a0a0f 72%);border:1px solid #ff244e66;border-radius:16px;padding:65px 25px}
-.download h2{font-size:clamp(30px,5vw,53px);margin:0 0 15px}
-.download p{color:#c4b9c4;line-height:1.75}
-.download .btn{margin-top:15px;font-size:16px}
-.eyebrow{color:#ff8196;font-size:12px;font-weight:900;letter-spacing:4px}
-.micro{font-size:12px!important;color:#9f97a3!important;margin-top:20px}
-footer{text-align:center;padding:35px 20px;color:#918a98;font-size:12px;line-height:1.8;border-top:1px solid #ffffff15}
-@media(max-width:900px){
-.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
-.features{grid-template-columns:repeat(2,minmax(0,1fr))}
-nav a:not(.btn){display:none}
-.hero-zone{display:none}
-.hero-download{left:37%;width:26%}
+:root {
+  --bg: #08080c;
+  --panel: #14141d;
+  --red: #ff244e;
+  --text: #f7f7fb;
+  --muted: #b6afbb;
 }
-@media(max-width:620px){
-header{height:64px;padding:0 5%}
-.logo{font-size:20px}
-nav .btn{padding:10px 14px;min-height:38px;font-size:11px}
-.hero-art{width:155%;max-width:none;min-height:0;margin-left:-27.5%}
-.hero-download{display:none}
-.mobile-hero-cta{display:block}
-.cards,.features,.game-grid{grid-template-columns:1fr}
-section{padding:65px 5%}
-.strip{gap:5px}
-.strip span{font-size:10px}
-.hero-fallback strong{font-size:42px}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
-@media(prefers-reduced-motion:reduce){
-html{scroll-behavior:auto}
-*,*:before,*:after{animation:none!important;transition:none!important}
-.cursor-glow{display:none}
+
+a { text-decoration: none; color: inherit; }
+button { font: inherit; }
+
+.red { color: var(--red); }
+
+/* CABEÇALHO */
+
+header {
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6%;
+  background: rgba(9,9,14,.94);
+  backdrop-filter: blur(16px);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.logo {
+  font-weight: 1000;
+  font-size: 25px;
+  letter-spacing: 3px;
+}
+
+.logo span { color: var(--red); }
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .7px;
+}
+
+nav a:not(.btn) {
+  transition: color .2s ease;
+}
+
+nav a:not(.btn):hover { color: var(--red); }
+
+/* BOTÕES */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 49px;
+  padding: 15px 27px;
+  border: 1px solid rgba(255,114,135,.75);
+  background: linear-gradient(115deg,#ff3056,#a70b31);
+  border-radius: 7px;
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: .7px;
+  box-shadow: 0 4px 20px rgba(255,36,78,.20);
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    filter .3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(255,36,78,.36);
+  filter: brightness(1.08);
+}
+
+.btn:focus-visible,
+a:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+/* HERO CINEMATOGRÁFICO */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #08080c;
+  line-height: 0;
+}
+
+/* Imagem original preservada */
+.hero-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 400px;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+/*
+  ILUMINAÇÃO SUAVE
+  Sem quadrados, bordas ou etiquetas.
+  Apenas um reflexo difuso sobre a arte.
+*/
+
+.cursor-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(
+      ellipse 290px 230px at var(--mx,50%) var(--my,50%),
+      rgba(255,38,77,.10) 0%,
+      rgba(255,38,77,.045) 35%,
+      transparent 78%
+    );
+  mix-blend-mode: screen;
+  transition: opacity .4s ease;
+}
+
+.hero.is-hovered .cursor-glow {
+  opacity: 1;
+}
+
+/*
+  Área clicável sobre o botão desenhado
+  na imagem original.
+*/
+
+.hero-download {
+  position: absolute;
+  left: 40%;
+  top: 59%;
+  width: 20%;
+  height: 10%;
+  z-index: 5;
+  display: block;
+  border-radius: 9px;
+  transition:
+    background .3s ease,
+    box-shadow .3s ease;
+}
+
+.hero-download:hover {
+  background: rgba(255,36,78,.035);
+  box-shadow: 0 0 28px rgba(255,36,78,.18);
+}
+
+.hero-download span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.mobile-hero-cta {
+  display: none;
+  text-align: center;
+  padding: 18px;
+  background: #0d0b12;
+}
+
+.hero-fallback {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+  text-align: center;
+  background: radial-gradient(circle,#370b1c,#08080c 70%);
+  z-index: 1;
+  padding: 30px;
+  line-height: 1.3;
+}
+
+.hero-fallback strong {
+  font-size: clamp(42px,8vw,100px);
+  letter-spacing: 5px;
+}
+
+.hero-fallback p {
+  font-size: clamp(17px,3vw,36px);
+  font-weight: 900;
+  margin: 0;
+}
+
+/* FAIXA DE RECURSOS */
+
+.strip {
+  display: flex;
+  justify-content: center;
+  gap: 12px 26px;
+  flex-wrap: wrap;
+  padding: 25px 5%;
+  background: #101016;
+  border-top: 1px solid rgba(255,36,78,.25);
+  border-bottom: 1px solid rgba(255,36,78,.25);
+}
+
+.strip span {
+  border-left: 2px solid var(--red);
+  padding: 10px 15px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .4px;
+}
+
+/* SEÇÕES */
+
+section {
+  padding: 90px 6%;
+  max-width: 1450px;
+  margin: auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(30px,4vw,49px);
+  margin: 0 0 15px;
+  font-weight: 1000;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--muted);
+  max-width: 760px;
+  margin: 0 auto 45px;
+  line-height: 1.75;
+  font-size: 15px;
+}
+
+/* CARDS COM ANIMAÇÃO DISCRETA */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: 30px;
+  background: linear-gradient(140deg,#1a1a24,#101016);
+  border: 1px solid rgba(255,255,255,.09);
+  border-top: 2px solid rgba(255,36,78,.35);
+  border-radius: 10px;
+  transition:
+    transform .35s cubic-bezier(.2,.8,.2,1),
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,36,78,.35);
+  box-shadow: 0 14px 32px rgba(0,0,0,.23);
+}
+
+.ico {
+  font-size: 29px;
+  color: var(--red);
+}
+
+.card h3 {
+  font-size: 19px;
+  margin: 20px 0 10px;
+}
+
+.card p {
+  color: #bcb4c1;
+  font-size: 14px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* VANTAGENS */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 17px;
+  margin: 0 auto 45px;
+}
+
+.feature {
+  padding: 23px 18px;
+  background: #111119;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 9px;
+  transition:
+    border-color .3s ease,
+    background .3s ease;
+}
+
+.feature:hover {
+  border-color: rgba(255,36,78,.25);
+  background: #16151d;
+}
+
+.feature strong {
+  display: block;
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.feature p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* JOGOS */
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 17px;
+}
+
+.game {
+  min-height: 170px;
+  display: flex;
+  align-items: end;
+  position: relative;
+  overflow: hidden;
+  border-radius: 9px;
+  background: linear-gradient(145deg,#391326,#101016);
+  border: 1px solid rgba(255,255,255,.09);
+  transition:
+    transform .3s ease,
+    border-color .3s ease;
+}
+
+.game:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,36,78,.30);
+}
+
+.game strong {
+  padding: 45px 20px 20px;
+  width: 100%;
+  background: linear-gradient(transparent,rgba(8,8,12,.94));
+  position: relative;
+  font-size: 19px;
+  letter-spacing: .6px;
+}
+
+.game::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 75% 15%,
+      rgba(255,36,78,.18),
+      transparent 60%
+    );
+}
+
+/* DOWNLOAD */
+
+.download {
+  text-align: center;
+  background:
+    radial-gradient(ellipse at center,#390a20,#0a0a0f 72%);
+  border: 1px solid rgba(255,36,78,.40);
+  border-radius: 16px;
+  padding: 65px 25px;
+}
+
+.download h2 {
+  font-size: clamp(30px,5vw,53px);
+  margin: 0 0 15px;
+}
+
+.download p {
+  color: #c4b9c4;
+  line-height: 1.75;
+}
+
+.download .btn {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.eyebrow {
+  color: #ff8196;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+
+.micro {
+  font-size: 12px !important;
+  color: #9f97a3 !important;
+  margin-top: 20px;
+}
+
+/* RODAPÉ */
+
+footer {
+  text-align: center;
+  padding: 35px 20px;
+  color: #918a98;
+  font-size: 12px;
+  line-height: 1.8;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  .features {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  nav a:not(.btn) {
+    display: none;
+  }
+
+  .hero-download {
+    left: 37%;
+    width: 26%;
+  }
+}
+
+@media (max-width: 620px) {
+  header {
+    height: 64px;
+    padding: 0 5%;
+  }
+
+  .logo { font-size: 20px; }
+
+  nav .btn {
+    padding: 10px 14px;
+    min-height: 38px;
+    font-size: 11px;
+  }
+
+  .hero-art {
+    width: 155%;
+    max-width: none;
+    min-height: 0;
+    margin-left: -27.5%;
+  }
+
+  .hero-download { display: none; }
+
+  .mobile-hero-cta { display: block; }
+
+  .cards,
+  .features,
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+
+  section { padding: 65px 5%; }
+
+  .strip { gap: 5px; }
+
+  .strip span { font-size: 10px; }
+
+  .hero-fallback strong { font-size: 42px; }
+}
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .cursor-glow { display: none; }
 }
 </style>
 </head>
+
 <body>
 
 <header>
-  <a href="#inicio" class="logo"><span>V</span>YKRON</a>
+  <a href="#inicio" class="logo">
+    <span>V</span>YKRON
+  </a>
+
   <nav>
     <a href="#inicio">INÍCIO</a>
     <a href="#recursos">RECURSOS</a>
@@ -111,169 +539,399 @@ html{scroll-behavior:auto}
 </header>
 
 <main>
-  <div class="hero" id="inicio" aria-label="Arte cinematográfica Vykron Optimizer">
-    <img class="hero-art"
-         src="https://vykronoptimizer.github.io/vykron-hero.png"
-         alt="Arte gamer Vykron Optimizer com personagens de jogos, iluminação vermelha e chamada para download"
-         fetchpriority="high">
 
-    <div class="hero-fallback" id="hero-fallback">
-      <strong>VYK<span class="red">RON</span></strong>
-      <p>MAXIMIZE SEU <span class="red">DESEMPENHO</span></p>
-      <a class="btn" href="#download">BAIXAR VYKRON</a>
-    </div>
+<!-- HERO ORIGINAL -->
 
-    <div class="cursor-glow" aria-hidden="true"></div>
-    <div class="hero-zone zone-cs" aria-hidden="true"><span class="zone-label">COUNTER-STRIKE 2</span></div>
-    <div class="hero-zone zone-gta" aria-hidden="true"><span class="zone-label">GTA V</span></div>
-    <div class="hero-zone zone-valorant" aria-hidden="true"><span class="zone-label">VALORANT</span></div>
-    <div class="hero-zone zone-games" aria-hidden="true"><span class="zone-label">FORTNITE • ROCKET LEAGUE</span></div>
+<div class="hero" id="inicio"
+     aria-label="Arte cinematográfica Vykron Optimizer">
 
-    <a class="hero-download"
-       href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/latest/download/Vykron.exe"
-       aria-label="Baixar Vykron Optimizer para Windows">
-      <span>BAIXAR VYKRON</span>
+  <img
+    class="hero-art"
+    src="https://vykronoptimizer.github.io/vykron-hero.png"
+    alt="Arte gamer Vykron Optimizer com personagens de jogos e iluminação vermelha"
+    fetchpriority="high"
+  >
+
+  <div class="hero-fallback" id="hero-fallback">
+    <strong>VYK<span class="red">RON</span></strong>
+
+    <p>
+      MAXIMIZE SEU
+      <span class="red">DESEMPENHO</span>
+    </p>
+
+    <a class="btn" href="#download">
+      BAIXAR VYKRON
     </a>
   </div>
 
-  <div class="mobile-hero-cta">
-    <a class="btn" href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/latest/download/Vykron.exe">⬇ BAIXAR VYKRON.EXE</a>
+  <!-- Apenas iluminação difusa, sem caixas -->
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Área invisível do botão da imagem -->
+  <a
+    class="hero-download"
+    href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/latest/download/Vykron.exe"
+    aria-label="Baixar Vykron Optimizer para Windows"
+  >
+    <span>BAIXAR VYKRON</span>
+  </a>
+
+</div>
+
+<div class="mobile-hero-cta">
+  <a
+    class="btn"
+    href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/latest/download/Vykron.exe"
+  >
+    ⬇ BAIXAR VYKRON.EXE
+  </a>
+</div>
+
+<!-- FAIXA -->
+
+<div class="strip">
+  <span>⚡ OTIMIZAÇÃO INTELIGENTE</span>
+  <span>◈ FPS PERFORMANCE LAB</span>
+  <span>◉ MONITORAMENTO</span>
+  <span>♻ AJUSTES REVERSÍVEIS</span>
+  <span>⬡ STORAGE CARE</span>
+</div>
+
+<!-- VANTAGENS -->
+
+<section id="vantagens">
+
+  <h2 class="section-title">
+    CONTROLE <span class="red">DE VERDADE</span>
+  </h2>
+
+  <p class="subtitle">
+    Um projeto gamer focado em informações úteis,
+    decisões conscientes e comparação de resultados
+    medidos — sem prometer FPS milagroso.
+  </p>
+
+  <div class="features">
+
+    <div class="feature">
+      <strong>Mais visibilidade</strong>
+      <p>
+        Consulte informações sobre hardware,
+        recursos e atividades do sistema.
+      </p>
+    </div>
+
+    <div class="feature">
+      <strong>Menos trabalho manual</strong>
+      <p>
+        Centralize diagnósticos e opções de ajustes
+        em uma interface.
+      </p>
+    </div>
+
+    <div class="feature">
+      <strong>Comparação real</strong>
+      <p>
+        Compare medições quando a captura de
+        desempenho for compatível.
+      </p>
+    </div>
+
+    <div class="feature">
+      <strong>Mais controle</strong>
+      <p>
+        Revise alterações e utilize opções
+        de reversão quando disponíveis.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- RECURSOS -->
+
+<section id="recursos">
+
+  <h2 class="section-title">
+    PODER DE <span class="red">OTIMIZAÇÃO</span>
+  </h2>
+
+  <p class="subtitle">
+    Ferramentas do Vykron Optimizer para diagnóstico,
+    monitoramento e ajustes controlados.
+    Alguns recursos são experimentais e dependem
+    de permissões e compatibilidade.
+  </p>
+
+  <div class="cards">
+
+    <article class="card">
+      <div class="ico">⚡</div>
+      <h3>Smart Optimization</h3>
+      <p>
+        Análise de configurações do Windows e opções
+        de ajustes com revisão antes da aplicação.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="ico">◈</div>
+      <h3>FPS Performance Lab</h3>
+      <p>
+        Medições e comparações de FPS e frametime
+        antes/depois. Captura experimental sujeita
+        a compatibilidade.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="ico">◉</div>
+      <h3>Hardware Monitor</h3>
+      <p>
+        Informações de CPU, GPU, memória e sensores
+        quando acessíveis pelo sistema.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="ico">▣</div>
+      <h3>Smart Process Cleaner</h3>
+      <p>
+        Classificação assistida de processos opcionais,
+        seleção e confirmação antes do encerramento.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="ico">⬡</div>
+      <h3>Storage Care 2.0</h3>
+      <p>
+        Inspeção de arquivos temporários e
+        prévia de ações de limpeza.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="ico">♻</div>
+      <h3>Restore Center</h3>
+      <p>
+        Opções para reverter ajustes registrados,
+        conforme disponibilidade do recurso.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="ico">⚙</div>
+      <h3>Game Boost</h3>
+      <p>
+        Configurações voltadas ao uso de jogos e à
+        redução de atividades opcionais em segundo plano.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="ico">▤</div>
+      <h3>Relatórios e diagnóstico</h3>
+      <p>
+        Informações do sistema, recomendações
+        e histórico de operações.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="ico">▥</div>
+      <h3>FPS Overlay experimental</h3>
+      <p>
+        Recursos de acompanhamento durante jogos,
+        sujeitos a limitações técnicas e permissões.
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<!-- JOGOS -->
+
+<section id="jogos">
+
+  <h2 class="section-title">
+    FEITO PARA <span class="red">GAMERS</span>
+  </h2>
+
+  <p class="subtitle">
+    Jogos que inspiram o projeto.
+    Ganhos de desempenho não são garantidos
+    e dependem do PC e de cada título.
+  </p>
+
+  <div class="game-grid">
+    <div class="game">
+      <strong>COUNTER-STRIKE 2</strong>
+    </div>
+
+    <div class="game">
+      <strong>VALORANT</strong>
+    </div>
+
+    <div class="game">
+      <strong>FORTNITE</strong>
+    </div>
+
+    <div class="game">
+      <strong>GTA V / FIVEM</strong>
+    </div>
+
+    <div class="game">
+      <strong>ROCKET LEAGUE</strong>
+    </div>
+
+    <div class="game">
+      <strong>OUTROS JOGOS</strong>
+    </div>
   </div>
 
-  <div class="strip">
-    <span>⚡ OTIMIZAÇÃO INTELIGENTE</span>
-    <span>◈ FPS PERFORMANCE LAB</span>
-    <span>◉ MONITORAMENTO</span>
-    <span>♻ AJUSTES REVERSÍVEIS</span>
-    <span>⬡ STORAGE CARE</span>
+</section>
+
+<!-- DOWNLOAD -->
+
+<section id="download">
+
+  <div class="download">
+
+    <div class="eyebrow">
+      READY TO OPTIMIZE?
+    </div>
+
+    <h2>
+      LIBERE O POTENCIAL<br>
+      <span class="red">DO SEU PC</span>
+    </h2>
+
+    <p>
+      Vykron Optimizer — Nexus 8.0 Beta 1<br>
+      Projeto gratuito para Windows 11 de 64 bits.
+    </p>
+
+    <a
+      class="btn"
+      href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/latest/download/Vykron.exe"
+    >
+      ⬇ DOWNLOAD VYKRON.EXE
+    </a>
+
+    <p class="micro">
+      Versão beta. Execute somente se confiar na origem
+      do arquivo. Faça backup antes de mudanças importantes.
+      Resultados variam.
+    </p>
+
   </div>
 
-  <section id="vantagens">
-    <h2 class="section-title">CONTROLE <span class="red">DE VERDADE</span></h2>
-    <p class="subtitle">Um projeto gamer focado em informações úteis, decisões conscientes e comparação de resultados medidos — sem prometer FPS milagroso.</p>
-    <div class="features">
-      <div class="feature"><strong>Mais visibilidade</strong><p>Consulte informações sobre hardware, recursos e atividades do sistema.</p></div>
-      <div class="feature"><strong>Menos trabalho manual</strong><p>Centralize diagnósticos e opções de ajustes em uma interface.</p></div>
-      <div class="feature"><strong>Comparação real</strong><p>Compare medições quando a captura de desempenho for compatível.</p></div>
-      <div class="feature"><strong>Mais controle</strong><p>Revise alterações e utilize opções de reversão quando disponíveis.</p></div>
-    </div>
-  </section>
+</section>
 
-  <section id="recursos">
-    <h2 class="section-title">PODER DE <span class="red">OTIMIZAÇÃO</span></h2>
-    <p class="subtitle">Ferramentas do Vykron Optimizer para diagnóstico, monitoramento e ajustes controlados. Alguns recursos são experimentais e dependem de permissões e compatibilidade.</p>
-    <div class="cards">
-      <article class="card"><div class="ico">⚡</div><h3>Smart Optimization</h3><p>Análise de configurações do Windows e opções de ajustes com revisão antes da aplicação.</p></article>
-      <article class="card"><div class="ico">◈</div><h3>FPS Performance Lab</h3><p>Medições e comparações de FPS e frametime antes/depois. Captura experimental sujeita a compatibilidade.</p></article>
-      <article class="card"><div class="ico">◉</div><h3>Hardware Monitor</h3><p>Informações de CPU, GPU, memória e sensores quando acessíveis pelo sistema.</p></article>
-      <article class="card"><div class="ico">▣</div><h3>Smart Process Cleaner</h3><p>Classificação assistida de processos opcionais, seleção e confirmação antes do encerramento.</p></article>
-      <article class="card"><div class="ico">⬡</div><h3>Storage Care 2.0</h3><p>Inspeção de arquivos temporários e prévia de ações de limpeza.</p></article>
-      <article class="card"><div class="ico">♻</div><h3>Restore Center</h3><p>Opções para reverter ajustes registrados, conforme disponibilidade do recurso.</p></article>
-      <article class="card"><div class="ico">⚙</div><h3>Game Boost</h3><p>Configurações voltadas ao uso de jogos e à redução de atividades opcionais em segundo plano.</p></article>
-      <article class="card"><div class="ico">▤</div><h3>Relatórios e diagnóstico</h3><p>Informações do sistema, recomendações e histórico de operações.</p></article>
-      <article class="card"><div class="ico">▥</div><h3>FPS Overlay experimental</h3><p>Recursos de acompanhamento durante jogos, sujeitos a limitações técnicas e permissões.</p></article>
-    </div>
-  </section>
-
-  <section id="jogos">
-    <h2 class="section-title">FEITO PARA <span class="red">GAMERS</span></h2>
-    <p class="subtitle">Jogos que inspiram o projeto. Ganhos de desempenho não são garantidos e dependem do PC e de cada título.</p>
-    <div class="game-grid">
-      <div class="game"><strong>COUNTER-STRIKE 2</strong></div>
-      <div class="game"><strong>VALORANT</strong></div>
-      <div class="game"><strong>FORTNITE</strong></div>
-      <div class="game"><strong>GTA V / FIVEM</strong></div>
-      <div class="game"><strong>ROCKET LEAGUE</strong></div>
-      <div class="game"><strong>OUTROS JOGOS</strong></div>
-    </div>
-  </section>
-
-  <section id="download">
-    <div class="download">
-      <div class="eyebrow">READY TO OPTIMIZE?</div>
-      <h2>LIBERE O POTENCIAL<br><span class="red">DO SEU PC</span></h2>
-      <p>Vykron Optimizer — Nexus 8.0 Beta 1<br>Projeto gratuito para Windows 11 de 64 bits.</p>
-      <a class="btn" href="https://github.com/vykronoptimizer/vykronoptimizer.github.io/releases/latest/download/Vykron.exe">⬇ DOWNLOAD VYKRON.EXE</a>
-      <p class="micro">Versão beta. Execute somente se confiar na origem do arquivo. Faça backup antes de mudanças importantes. Resultados variam.</p>
-    </div>
-  </section>
 </main>
 
 <footer>
-  <strong>VYK RON OPTIMIZER</strong><br>
-  Projeto independente, não afiliado à Valve, Riot Games, Epic Games, Rockstar Games ou Psyonix.<br>
+  <strong>VYKRON OPTIMIZER</strong><br>
+
+  Projeto independente, não afiliado à Valve,
+  Riot Games, Epic Games, Rockstar Games ou Psyonix.<br>
+
   © 2026 Vykron Optimizer.
 </footer>
 
 <script>
 (() => {
-  'use strict';
+  "use strict";
 
-  const hero = document.querySelector('.hero');
-  const art = document.querySelector('.hero-art');
-  const fallback = document.getElementById('hero-fallback');
-  const zones = [...document.querySelectorAll('.hero-zone')];
-  const dl = document.querySelector('.hero-download');
+  const hero = document.querySelector(".hero");
+  const art = document.querySelector(".hero-art");
+  const fallback = document.getElementById("hero-fallback");
+  const download = document.querySelector(".hero-download");
+
+  /*
+    Se a imagem original não carregar,
+    mostramos uma apresentação alternativa.
+  */
 
   if (art && fallback) {
-    const fail = () => {
-      art.style.visibility = 'hidden';
-      fallback.style.display = 'flex';
-      dl.style.display = 'none';
+    const showFallback = () => {
+      art.style.visibility = "hidden";
+      fallback.style.display = "flex";
+
+      if (download) {
+        download.style.display = "none";
+      }
     };
-    art.addEventListener('error', fail);
-    if (art.complete && !art.naturalWidth) fail();
+
+    art.addEventListener("error", showFallback);
+
+    if (art.complete && !art.naturalWidth) {
+      showFallback();
+    }
   }
 
-  if (hero && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
-    hero.addEventListener('pointermove', e => {
-      const r = hero.getBoundingClientRect();
-      if (!r.width || !r.height) return;
+  /*
+    Interação premium:
+    somente luz difusa acompanhando o cursor.
 
-      const x = (e.clientX - r.left) / r.width * 100;
-      const y = (e.clientY - r.top) / r.height * 100;
+    Sem:
+    - quadrados;
+    - etiquetas sobre personagens;
+    - bordas;
+    - animações exageradas.
+  */
 
-      hero.style.setProperty('--mx', x + '%');
-      hero.style.setProperty('--my', y + '%');
-      hero.classList.add('is-hovered');
+  const canHover = window.matchMedia(
+    "(hover: hover) and (pointer: fine)"
+  ).matches;
 
-      const areas = [
-        [0, 35, 0, 49],
-        [0, 35, 49, 100],
-        [66, 100, 0, 55],
-        [66, 100, 55, 100]
-      ];
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
-      zones.forEach((z, i) => {
-        z.classList.toggle(
-          'active',
-          x >= areas[i][0] &&
-          x <= areas[i][1] &&
-          y >= areas[i][2] &&
-          y <= areas[i][3]
-        );
+  if (hero && canHover && !reduceMotion) {
+
+    let framePending = false;
+    let pointerX = 0;
+    let pointerY = 0;
+
+    hero.addEventListener("pointermove", event => {
+
+      const bounds = hero.getBoundingClientRect();
+
+      if (!bounds.width || !bounds.height) {
+        return;
+      }
+
+      pointerX =
+        ((event.clientX - bounds.left) / bounds.width) * 100;
+
+      pointerY =
+        ((event.clientY - bounds.top) / bounds.height) * 100;
+
+      hero.classList.add("is-hovered");
+
+      if (framePending) {
+        return;
+      }
+
+      framePending = true;
+
+      requestAnimationFrame(() => {
+        hero.style.setProperty("--mx", pointerX + "%");
+        hero.style.setProperty("--my", pointerY + "%");
+        framePending = false;
       });
-
-      const b = dl.getBoundingClientRect();
-      const dx = Math.max(b.left - e.clientX, 0, e.clientX - b.right);
-      const dy = Math.max(b.top - e.clientY, 0, e.clientY - b.bottom);
-      dl.classList.toggle('near', Math.hypot(dx, dy) < 120);
     });
 
-    hero.addEventListener('pointerleave', () => {
-      hero.classList.remove('is-hovered');
-      zones.forEach(z => z.classList.remove('active'));
-      dl.classList.remove('near');
+    hero.addEventListener("pointerleave", () => {
+      hero.classList.remove("is-hovered");
     });
+
   }
 
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('pointermove', e => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty('--cx', e.clientX - r.left + 'px');
-      card.style.setProperty('--cy', e.clientY - r.top + 'px');
-    });
-  });
 })();
 </script>
 
